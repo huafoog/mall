@@ -15,8 +15,8 @@ mybatis-plus:
       id-type: auto
       logic-not-delete-value: 1
       logic-delete-value: 0
-server:
-  port: 10000
 logging:
   level:
     com.qingshan.mall.product: debug
+server:
+  port: 10000

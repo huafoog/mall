@@ -9,12 +9,18 @@ import java.util.Map;
 /**
  * sku信息
  *
- * @author qingshan
- * @email zyxss315@163.com
- * @date 2021-12-28 11:28:06
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-01 21:08:49
  */
 public interface SkuInfoService extends IService<SkuInfoEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    void saveSkuInfo(SkuInfoEntity skuInfoEntity);
+
+    PageUtils queryPageByCondition(Map<String, Object> params);
+
+
 }
 

@@ -1,28 +1,23 @@
 package com.qingshan.mall.product.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.qingshan.mall.product.entity.AttrAttrgroupRelationEntity;
 import com.qingshan.mall.product.service.AttrAttrgroupRelationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import com.qingshan.common.utils.PageUtils;
 import com.qingshan.common.utils.R;
+
+import java.util.Arrays;
+import java.util.Map;
 
 
 
 /**
  * 属性&属性分组关联
  *
- * @author qingshan
- * @email zyxss315@163.com
- * @date 2021-12-28 11:28:06
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-01 22:50:32
  */
 @RestController
 @RequestMapping("product/attrattrgrouprelation")
@@ -34,7 +29,7 @@ public class AttrAttrgroupRelationController {
      * 列表
      */
     @RequestMapping("/list")
-    // @RequiresPermissions("product:attrattrgrouprelation:list")
+    //@RequiresPermissions("product:attrattrgrouprelation:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = attrAttrgroupRelationService.queryPage(params);
 
@@ -46,7 +41,7 @@ public class AttrAttrgroupRelationController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    // @RequiresPermissions("product:attrattrgrouprelation:info")
+    //@RequiresPermissions("product:attrattrgrouprelation:info")
     public R info(@PathVariable("id") Long id){
 		AttrAttrgroupRelationEntity attrAttrgroupRelation = attrAttrgroupRelationService.getById(id);
 
@@ -57,7 +52,7 @@ public class AttrAttrgroupRelationController {
      * 保存
      */
     @RequestMapping("/save")
-    // @RequiresPermissions("product:attrattrgrouprelation:save")
+    //@RequiresPermissions("product:attrattrgrouprelation:save")
     public R save(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
 		attrAttrgroupRelationService.save(attrAttrgroupRelation);
 
@@ -68,7 +63,7 @@ public class AttrAttrgroupRelationController {
      * 修改
      */
     @RequestMapping("/update")
-    // @RequiresPermissions("product:attrattrgrouprelation:update")
+    //@RequiresPermissions("product:attrattrgrouprelation:update")
     public R update(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
 		attrAttrgroupRelationService.updateById(attrAttrgroupRelation);
 
@@ -79,7 +74,7 @@ public class AttrAttrgroupRelationController {
      * 删除
      */
     @RequestMapping("/delete")
-    // @RequiresPermissions("product:attrattrgrouprelation:delete")
+    //@RequiresPermissions("product:attrattrgrouprelation:delete")
     public R delete(@RequestBody Long[] ids){
 		attrAttrgroupRelationService.removeByIds(Arrays.asList(ids));
 

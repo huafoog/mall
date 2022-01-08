@@ -1,4 +1,4 @@
-package com.qingshan.mall.mallorder;
+package com.qingshan.mall.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

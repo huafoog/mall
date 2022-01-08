@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package exception;
+package com.qingshan.common.utils;
 
 /**
  * 自定义异常

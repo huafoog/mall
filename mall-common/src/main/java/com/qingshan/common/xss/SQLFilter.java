@@ -6,9 +6,9 @@
  * 版权所有，侵权必究！
  */
 
-package xss;
+package com.qingshan.common.xss;
 
-import exception.RRException;
+import com.qingshan.common.exception.RRException;
 import org.apache.commons.lang.StringUtils;
 
 /**

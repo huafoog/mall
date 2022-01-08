@@ -1,10 +1,10 @@
-package com.qingshan.mall.member;
+package com.qingshan.mall.order;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MallMemberApplicationTests {
+class MallOrderApplicationTests {
 
     @Test
     void contextLoads() {

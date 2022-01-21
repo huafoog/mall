@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: mall-nacos:8848
+  application:
+    name: mall-search
+server:
+  port: 3000

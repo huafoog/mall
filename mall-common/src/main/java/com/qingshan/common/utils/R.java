@@ -8,6 +8,7 @@
 
 package com.qingshan.common.utils;
 
+import lombok.Data;
 import org.apache.http.HttpStatus;
 
 import java.util.HashMap;
@@ -18,12 +19,28 @@ import java.util.Map;
  *
  * @author Mark sunlightcs@gmail.com
  */
-public class R extends HashMap<String, Object> {
+@Data
+public class R<T> extends HashMap<String, Object> {
 	private static final long serialVersionUID = 1L;
+
+	private T data;
+
 	
 	public R() {
 		put("code", 0);
 		put("msg", "success");
+	}
+
+	/**
+	 * 设置成功数据
+	 * @param data 要返回的数据
+	 * @param <T> 返回的数据类型
+	 * @return
+	 */
+	public static <T> R<T> ok(T data){
+		R r = new R();
+		r.setData(data);
+		return r;
 	}
 	
 	public static R error() {
@@ -56,9 +73,13 @@ public class R extends HashMap<String, Object> {
 	public static R ok() {
 		return new R();
 	}
-
+	@Override
 	public R put(String key, Object value) {
 		super.put(key, value);
 		return this;
+	}
+
+	public  Integer getCode() {
+		return (Integer) this.get("code");
 	}
 }

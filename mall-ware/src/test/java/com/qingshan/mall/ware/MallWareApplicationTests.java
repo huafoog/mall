@@ -1,10 +1,12 @@
-package com.qingshan.mall.mallorder;
+package com.qingshan.mall.ware;
 
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MallOrderApplicationTests {
+class MallWareApplicationTests {
 
+    @Test
     void contextLoads() {
     }
 

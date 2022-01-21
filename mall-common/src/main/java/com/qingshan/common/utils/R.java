@@ -78,8 +78,16 @@ public class R<T> extends HashMap<String, Object> {
 		super.put(key, value);
 		return this;
 	}
+<<<<<<< HEAD
 
 	public  Integer getCode() {
 		return (Integer) this.get("code");
 	}
+=======
+	public  Integer getCode() {
+
+		return (Integer) this.get("code");
+	}
+
+>>>>>>> dbd7be12265b119c9fda2dc7e617be6820ea0825
 }

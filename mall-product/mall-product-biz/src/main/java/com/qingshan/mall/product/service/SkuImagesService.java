@@ -1,8 +1,8 @@
 package com.qingshan.mall.product.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.qingshan.common.utils.PageUtils;
 import com.qingshan.mall.product.entity.SkuImagesEntity;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.Map;
 

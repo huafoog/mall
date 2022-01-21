@@ -1,8 +1,17 @@
 package com.qingshan.mall.product.controller;
 
+import com.qingshan.common.utils.PageUtils;
+import com.qingshan.common.utils.R;
+import com.qingshan.mall.product.entity.SpuInfoEntity;
+import com.qingshan.mall.product.service.SpuInfoService;
+import com.qingshan.mall.product.vo.SpuSaveVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.Arrays;
 import java.util.Map;
 
+<<<<<<< HEAD:mall-product/mall-product-biz/src/main/java/com/qingshan/mall/product/controller/SpuInfoController.java
 import com.qingshan.mall.product.vo.SpuSaveVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +25,8 @@ import com.qingshan.mall.product.service.SpuInfoService;
 import com.qingshan.common.utils.PageUtils;
 import com.qingshan.common.utils.R;
 
+=======
+>>>>>>> dbd7be12265b119c9fda2dc7e617be6820ea0825:mall-product/src/main/java/com/qingshan/mall/product/controller/SpuInfoController.java
 
 
 /**

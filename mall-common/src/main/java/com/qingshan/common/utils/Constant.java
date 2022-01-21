@@ -8,6 +8,7 @@
 
 package com.qingshan.common.utils;
 
+
 /**
  * 常量
  *

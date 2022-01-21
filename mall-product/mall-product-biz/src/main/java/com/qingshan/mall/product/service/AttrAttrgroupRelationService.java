@@ -2,8 +2,9 @@ package com.qingshan.mall.product.service;
 
 import com.qingshan.mall.product.vo.AttrGroupRelationVo;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.qingshan.common.utils.PageUtils;
 import com.qingshan.mall.product.entity.AttrAttrgroupRelationEntity;
+import com.qingshan.mall.product.vo.AttrGroupRelationVo;
+import com.qingshan.common.utils.PageUtils;
 
 import java.util.List;
 import java.util.Map;

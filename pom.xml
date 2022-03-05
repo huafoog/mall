@@ -63,7 +63,9 @@
     <modules>
         <module>mall-member</module>
         <module>mall-order</module>
-<!--        <module>mall-product</module>-->
+        <module>mall-product</module>
+        <module>mall-geteway</module>
+        <module>mall-search</module>
         <module>mall-ware</module>
         <module>mall-coupon</module>
         <module>renren-fast</module>

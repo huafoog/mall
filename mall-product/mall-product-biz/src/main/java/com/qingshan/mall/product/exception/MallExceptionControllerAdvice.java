@@ -1,6 +1,6 @@
 package com.qingshan.mall.product.exception;
 
-import com.qingshan.common.exception.BizCodeEnume;
+import com.qingshan.common.constant.enums.BizCodeEnume;
 import com.qingshan.common.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;

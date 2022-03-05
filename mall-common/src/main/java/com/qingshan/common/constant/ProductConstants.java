@@ -1,4 +1,4 @@
-package com.qingshan.common.constant.enums;
+package com.qingshan.common.constant;
 
 import lombok.Data;
 public class ProductConstants {

@@ -1,4 +1,4 @@
-package com.qingshan.common.exception;
+package com.qingshan.common.constant.enums;
 
 /***
  * 错误码和错误信息定义类

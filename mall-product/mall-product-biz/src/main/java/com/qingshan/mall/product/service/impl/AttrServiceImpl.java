@@ -1,6 +1,6 @@
 package com.qingshan.mall.product.service.impl;
 
-import com.qingshan.common.constant.enums.ProductConstants;
+import com.qingshan.common.constant.ProductConstants;
 import com.qingshan.mall.product.dao.AttrAttrgroupRelationDao;
 import com.qingshan.mall.product.dao.AttrGroupDao;
 import com.qingshan.mall.product.dao.CategoryDao;

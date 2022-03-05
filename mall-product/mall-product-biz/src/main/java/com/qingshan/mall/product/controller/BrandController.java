@@ -12,25 +12,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-<<<<<<< HEAD:mall-product/mall-product-biz/src/main/java/com/qingshan/mall/product/controller/BrandController.java
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.qingshan.mall.product.entity.BrandEntity;
-import com.qingshan.mall.product.service.BrandService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
-
-import javax.validation.Valid;
-
-=======
->>>>>>> dbd7be12265b119c9fda2dc7e617be6820ea0825:mall-product/src/main/java/com/qingshan/mall/product/controller/BrandController.java
 
 /**
  * 品牌

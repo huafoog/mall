@@ -6,11 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-<<<<<<<< HEAD:mall-common/src/main/java/com/qingshan/common/exception/RRException.java
 package com.qingshan.common.exception;
-========
-package com.qingshan.common.utils;
->>>>>>>> dbd7be12265b119c9fda2dc7e617be6820ea0825:mall-common/src/main/java/com/qingshan/common/utils/RRException.java
 
 /**
  * 自定义异常

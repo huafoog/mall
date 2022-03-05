@@ -53,14 +53,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  *  1）、编写异常处理类，使用@ControllerAdvice。
  *  2）、使用@ExceptionHandler标注方法可以处理的异常。
  */
-<<<<<<< HEAD:mall-product/mall-product-biz/src/main/java/com/qingshan/mall/product/MallProductApplication.java
 @EnableFeignClients(basePackages = {
         "com.qingshan.mall.coupon.feign","com.qingshan.mall.ware.feign","com.qingshan.mall.search.feign"
 })
-@SpringBootApplication
-=======
-//@EnableFeignClients(basePackages = "com.qingshan.mall.product.feign")
->>>>>>> dbd7be12265b119c9fda2dc7e617be6820ea0825:mall-product/src/main/java/com/qingshan/mall/product/MallProductApplication.java
 @EnableDiscoveryClient
 @MapperScan("com.qingshan.mall.product.dao")
 @SpringBootApplication

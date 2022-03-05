@@ -2,20 +2,13 @@ package com.qingshan.mall.product.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-<<<<<<< HEAD:mall-product/mall-product-biz/src/main/java/com/qingshan/mall/product/entity/BrandEntity.java
 
 import java.io.Serializable;
 
-=======
->>>>>>> dbd7be12265b119c9fda2dc7e617be6820ea0825:mall-product/src/main/java/com/qingshan/mall/product/entity/BrandEntity.java
 import lombok.Data;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.*;
-<<<<<<< HEAD:mall-product/mall-product-biz/src/main/java/com/qingshan/mall/product/entity/BrandEntity.java
-=======
-import java.io.Serializable;
->>>>>>> dbd7be12265b119c9fda2dc7e617be6820ea0825:mall-product/src/main/java/com/qingshan/mall/product/entity/BrandEntity.java
 
 /**
  * 品牌
@@ -54,11 +47,7 @@ public class BrandEntity implements Serializable {
 	/**
 	 * 显示状态[0-不显示；1-显示]
 	 */
-//	@Pattern()
-<<<<<<< HEAD:mall-product/mall-product-biz/src/main/java/com/qingshan/mall/product/entity/BrandEntity.java
-=======
 	@NotNull
->>>>>>> dbd7be12265b119c9fda2dc7e617be6820ea0825:mall-product/src/main/java/com/qingshan/mall/product/entity/BrandEntity.java
 	private Integer showStatus;
 	/**
 	 * 检索首字母

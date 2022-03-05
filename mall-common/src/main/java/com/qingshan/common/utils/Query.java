@@ -11,10 +11,7 @@ package com.qingshan.common.utils;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-<<<<<<< HEAD
 import com.qingshan.common.xss.SQLFilter;
-=======
->>>>>>> dbd7be12265b119c9fda2dc7e617be6820ea0825
 import org.apache.commons.lang.StringUtils;
 import com.qingshan.common.xss.SQLFilter;
 

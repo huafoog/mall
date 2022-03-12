@@ -34,6 +34,9 @@ public class ProductServiceImpl implements ProductService {
      */
     @Override
     public R createIndex(List<SkuEsModel> models) throws IOException {
+        if (models == null || models.size() == 0){
+            return R.error("未获取到需要创建的数据");
+        }
         BulkRequest bulkRequest = new BulkRequest();
         for (SkuEsModel model : models) {
             IndexRequest indexRequest = new IndexRequest(EsConstants.PRODUCT_INDEX);

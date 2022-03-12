@@ -3,4 +3,4 @@ spring:
     nacos:
       config:
         server-addr: mall-nacos:8848
-        file-extension: yml
+        file-extension: yaml

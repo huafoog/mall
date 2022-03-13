@@ -3,6 +3,7 @@ package com.qingshan.mall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.qingshan.common.utils.PageUtils;
 import com.qingshan.mall.product.entity.SkuInfoEntity;
+import com.qingshan.mall.product.vo.sku.SkuItemVO;
 
 import java.util.Map;
 
@@ -21,6 +22,8 @@ public interface SkuInfoService extends IService<SkuInfoEntity> {
 
     PageUtils queryPageByCondition(Map<String, Object> params);
 
+
+    SkuItemVO item(String skuId);
 
 }
 

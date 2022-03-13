@@ -1,5 +1,9 @@
 package com.qingshan.mall.product.service.impl;
 
+import com.qingshan.mall.product.dao.AttrGroupDao;
+import com.qingshan.mall.product.vo.sku.SpuItemAttrGroupVO;
+import lombok.AllArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

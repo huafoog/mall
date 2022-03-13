@@ -15,13 +15,15 @@ package com.qingshan.common.constant.enums;
  *
  *
  */
-public enum BizCodeEnume {
+public enum BizCodeEnum {
     UNKNOW_EXCEPTION(10000,"系统未知异常"),
-    VAILD_EXCEPTION(10001,"参数格式校验失败");
+    VAILD_EXCEPTION(10001,"参数格式校验失败"),
+    PRODUCT_EXCEPTION(11000,"未获取到当前商品")
+    ;
 
     private int code;
     private String msg;
-    BizCodeEnume(int code,String msg){
+    BizCodeEnum(int code, String msg){
         this.code = code;
         this.msg = msg;
     }

@@ -19,4 +19,4 @@ logging:
   level:
     com.qingshan.mall.product: debug
 server:
-  port: 10000
+  port: 10001

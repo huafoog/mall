@@ -8,6 +8,8 @@
 
 package com.qingshan.common.utils;
 
+import com.qingshan.common.constant.enums.BizCodeEnum;
+import com.qingshan.common.exception.RRException;
 import lombok.Data;
 import org.apache.http.HttpStatus;
 
@@ -55,6 +57,19 @@ public class R<T> extends HashMap<String, Object> {
 		R r = new R();
 		r.put("code", code);
 		r.put("msg", msg);
+		return r;
+	}
+
+	public static R error(BizCodeEnum bizCodeEnum,int code) {
+		R r = new R();
+		r.put("code", code);
+		r.put("msg", String.format("%s  【错误代码：%s】",bizCodeEnum.getMsg(),bizCodeEnum.getCode()));
+		return r;
+	}
+	public static R error(BizCodeEnum bizCodeEnum) {
+		R r = new R();
+		r.put("code", 500);
+		r.put("msg", String.format("%s  【错误代码：%s】",bizCodeEnum.getMsg(),bizCodeEnum.getCode()));
 		return r;
 	}
 

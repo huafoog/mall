@@ -8,20 +8,30 @@
 
 package com.qingshan.common.exception;
 
+import com.qingshan.common.constant.enums.BizCodeEnum;
+import lombok.Data;
+
 /**
  * 自定义异常
  *
  * @author Mark sunlightcs@gmail.com
  */
+@Data
 public class RRException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	
     private String msg;
     private int code = 500;
+
+    private BizCodeEnum bizCode;
     
     public RRException(String msg) {
 		super(msg);
 		this.msg = msg;
+	}
+
+	public RRException(BizCodeEnum bizCodeEnum) {
+		this.bizCode = bizCodeEnum;
 	}
 	
 	public RRException(String msg, Throwable e) {
@@ -41,21 +51,5 @@ public class RRException extends RuntimeException {
 		this.code = code;
 	}
 
-	public String getMsg() {
-		return msg;
-	}
-
-	public void setMsg(String msg) {
-		this.msg = msg;
-	}
-
-	public int getCode() {
-		return code;
-	}
-
-	public void setCode(int code) {
-		this.code = code;
-	}
-	
 	
 }

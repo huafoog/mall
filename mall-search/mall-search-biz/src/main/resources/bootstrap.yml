@@ -4,3 +4,7 @@ spring:
       config:
         server-addr: mall-nacos:8848
         file-extension: yaml
+
+
+  thymeleaf:
+    cache: false

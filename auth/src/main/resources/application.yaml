@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: mall-auth
+  cloud:
+    nacos:
+      discovery:
+        server-addr: mall-nacos:8848
+  thymeleaf:
+    cache: false
+  redis:
+    port: 6379
+    host: 101.35.101.237
+    password: VwuI4U6pU8nARz%^InF%EH8gcyH0IM2r
+server:
+  port: 20000

@@ -99,4 +99,9 @@ public class R<T> extends HashMap<String, Object> {
 		return (Integer) this.get("code");
 	}
 
+	public  boolean getSuccess() {
+
+		return getCode()== 0;
+	}
+
 }

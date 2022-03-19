@@ -25,4 +25,13 @@ public class ProjectNameConstants {
      * 检索
      */
     public final static String SEARCH = "mall-search";
+    /**
+     * 会员
+     */
+    public final static String MEMBER = "mall-member";
+
+    /**
+     * 第三方
+     */
+    public final static String THIRD_PARTY = "mall-third-party";
 }

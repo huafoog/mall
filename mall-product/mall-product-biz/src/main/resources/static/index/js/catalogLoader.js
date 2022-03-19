@@ -1,5 +1,5 @@
 $(function(){
-    $.getJSON("index/json/catalog.json",function (data) {
+    $.getJSON("index/catalog.json",function (data) {
 
         var ctgall=data;
         $(".header_main_left_a").each(function(){
@@ -19,7 +19,7 @@ $(function(){
                         var  ctg3List=ctg2["catalog3List"];
                         var len=0;
                         $.each(ctg3List,function (i,ctg3) {
-                            var cata3link = $("<a href=\"http://search.gmall.com/list.html?catalog3Id="+ctg3.id+"\" style=\"color: #999;\">" + ctg3.name + "</a>");
+                            var cata3link = $("<a href=\"http://search.mall.com/list.html?catalog3Id="+ctg3.id+"\" style=\"color: #999;\">" + ctg3.name + "</a>");
                             li.append(cata3link);
                             len=len+1+ctg3.name.length;
                         });
@@ -36,7 +36,6 @@ $(function(){
                 panel.append(panelol);
                 $(this).after(panel);
                 $(this).parent().addClass("header_li2");
-                console.log($(".header_main_left").html());
             }
         });
     });

@@ -4,22 +4,17 @@ import com.alibaba.nacos.client.utils.StringUtils;
 import com.qingshan.common.constant.enums.BizCodeEnum;
 import com.qingshan.common.dto.member.MemberRegisterDTO;
 import com.qingshan.common.utils.R;
-import com.qingshan.mall.auth.constants.AuthServerConstant;
+import com.qingshan.common.constant.AuthServerConstant;
 import com.qingshan.mall.auth.feign.RemoteMemberFeignService;
 import com.qingshan.mall.auth.feign.third.part.RemoteMailService;
 import com.qingshan.mall.auth.mail.SendCodeInputDTO;
 import com.qingshan.mall.auth.service.AuthService;
 import com.qingshan.mall.auth.vo.UserRegisterVO;
 import lombok.AllArgsConstructor;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -69,13 +64,13 @@ public class AuthServiceImpl implements AuthService {
         //1、接口防刷
         String prefixPhone = AuthServerConstant.SMS_CODE_CACHE_PREFIX + email;
         String redisCode = (String) stringRedisTemplate.opsForValue().get(prefixPhone);
-//        if (!StringUtils.isEmpty(redisCode)){
-//            long l = Long.parseLong(redisCode.split("_")[1]);
-//            if (System.currentTimeMillis() -l < 60000){
-//                //60秒内不能再发
-//                return R.error(BizCodeEnum.SMS_CODE_EXCEPTION.getCode(),BizCodeEnum.SMS_CODE_EXCEPTION.getMsg());
-//            }
-//        }
+        if (!StringUtils.isEmpty(redisCode)){
+            long l = Long.parseLong(redisCode.split("_")[1]);
+            if (System.currentTimeMillis() -l < 60000){
+                //60秒内不能再发
+                return R.error(BizCodeEnum.SMS_CODE_EXCEPTION.getCode(),BizCodeEnum.SMS_CODE_EXCEPTION.getMsg());
+            }
+        }
 
         //2、验证码的再次校验。redis 存key-phone, value-code   sms:code:18896736055 ->12345
         String code = String.valueOf((int)((Math.random() + 1) * 100000));

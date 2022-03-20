@@ -1,6 +1,8 @@
 package com.qingshan.mall.member.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.qingshan.common.dto.member.MemberDTO;
+import com.qingshan.common.dto.member.MemberLoginDTO;
 import com.qingshan.common.dto.member.MemberRegisterDTO;
 import com.qingshan.common.utils.PageUtils;
 import com.qingshan.mall.member.entity.MemberEntity;
@@ -23,5 +25,12 @@ public interface MemberService extends IService<MemberEntity> {
     void register(MemberRegisterDTO vo);
     void checkPhoneUnique(String phone) throws PhoneExistException;
     void checkUserNameUnique(String userName) throws UserNameExistException;
+
+    /**
+     * 登录
+     * @param vo
+     * @return
+     */
+    MemberDTO login(MemberLoginDTO vo);
 }
 

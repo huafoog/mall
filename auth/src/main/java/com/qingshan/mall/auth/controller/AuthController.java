@@ -1,17 +1,21 @@
 package com.qingshan.mall.auth.controller;
 
+import com.qingshan.common.dto.member.MemberDTO;
+import com.qingshan.common.dto.member.MemberLoginDTO;
 import com.qingshan.common.utils.R;
+import com.qingshan.common.constant.AuthServerConstant;
+import com.qingshan.mall.auth.feign.RemoteMemberFeignService;
 import com.qingshan.mall.auth.service.AuthService;
 import com.qingshan.mall.auth.utils.VerifyCode;
 import com.qingshan.mall.auth.vo.UserRegisterVO;
 import lombok.AllArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -28,6 +32,7 @@ import java.util.Map;
 public class AuthController {
 
     private final AuthService authService;
+    private final RemoteMemberFeignService memberFeignService;
 
     /* 获取验证码图片*/
 
@@ -72,28 +77,39 @@ public class AuthController {
      * //TODO  1、分布式下的session问题
      * RedirectAttributes redirectAttributes 模拟重定向携带数据
      * @param vo
-     * @param redirectAttributes
      * @return
      */
     @PostMapping("/register")
-    public String register(@Validated UserRegisterVO vo, RedirectAttributes redirectAttributes){
+    public R register(@Validated @RequestBody UserRegisterVO vo){
         //1、校验验证码
         R result = authService.register(vo);
         if (!result.getSuccess()){
             Map<String, Object> errors = new HashMap<>();
             errors.put("code", result.get("msg"));
-            redirectAttributes.addFlashAttribute("errors", errors);
-            return "redirect:http://auth.mall.com/reg.html";
+            return R.error(result.getMsg());
         }
         //注册成功回到登录页
         //return "redirect:http://auth.gulimall.com/login.html";
-        return "redirect:http://auth.mall.com/login.html";
+        return R.ok();
     }
 
-    @ResponseBody
-    @GetMapping("/sms/sendCode")
+    @GetMapping("/email/sendCode")
     public R sendCode(@RequestParam("email") String email){
        return authService.sendCode(email);
     }
+
+
+    @PostMapping("/login")
+    public R login(@Validated @RequestBody MemberLoginDTO vo, HttpSession session){
+        R<MemberDTO> res = memberFeignService.login(vo);
+        if (res.getSuccess()){
+            session.setAttribute(AuthServerConstant.LOGIN_USER,res.getData());
+            return R.ok();
+        }else{
+            return res;
+        }
+
+    }
+
 
 }

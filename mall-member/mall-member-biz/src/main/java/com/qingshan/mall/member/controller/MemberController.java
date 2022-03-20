@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 import com.qingshan.common.constant.enums.BizCodeEnum;
+import com.qingshan.common.dto.member.MemberDTO;
+import com.qingshan.common.dto.member.MemberLoginDTO;
 import com.qingshan.common.dto.member.MemberRegisterDTO;
 import com.qingshan.mall.member.exception.PhoneExistException;
 import com.qingshan.mall.member.exception.UserNameExistException;
@@ -42,6 +44,16 @@ public class MemberController {
             return R.error(BizCodeEnum.USER_EXIST_EXCEPTION.getCode(),BizCodeEnum.USER_EXIST_EXCEPTION.getMsg());
         }
         return R.ok();
+    }
+
+    @PostMapping("/login")
+    public R login(@RequestBody MemberLoginDTO vo){
+        MemberDTO entity = memberService.login(vo);
+        if (entity != null){
+            return R.ok(entity);
+        }else {
+            return R.error(BizCodeEnum.LOGINACCT_PASSWORD_INVAILD_EXCEPTION.getCode(),BizCodeEnum.LOGINACCT_PASSWORD_INVAILD_EXCEPTION.getMsg());
+        }
     }
 
     /**

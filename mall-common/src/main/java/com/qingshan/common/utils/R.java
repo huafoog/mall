@@ -8,10 +8,12 @@
 
 package com.qingshan.common.utils;
 
+import com.alibaba.fastjson.JSONObject;
 import com.qingshan.common.constant.enums.BizCodeEnum;
 import com.qingshan.common.exception.RRException;
 import lombok.Data;
 import org.apache.http.HttpStatus;
+import org.springframework.beans.BeanUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,11 +27,9 @@ import java.util.Map;
 public class R<T> extends HashMap<String, Object> {
 	private static final long serialVersionUID = 1L;
 
-	private T data;
-
-	
 	public R() {
 		put("code", 0);
+		put("success", true);
 		put("msg", "success");
 	}
 
@@ -41,7 +41,7 @@ public class R<T> extends HashMap<String, Object> {
 	 */
 	public static <T> R<T> ok(T data){
 		R r = new R();
-		r.setData(data);
+		r.put("data",data);
 		return r;
 	}
 	
@@ -57,18 +57,21 @@ public class R<T> extends HashMap<String, Object> {
 		R r = new R();
 		r.put("code", code);
 		r.put("msg", msg);
+		r.put("success", false);
 		return r;
 	}
 
 	public static R error(BizCodeEnum bizCodeEnum,int code) {
 		R r = new R();
 		r.put("code", code);
+		r.put("success", false);
 		r.put("msg", String.format("%s  【错误代码：%s】",bizCodeEnum.getMsg(),bizCodeEnum.getCode()));
 		return r;
 	}
 	public static R error(BizCodeEnum bizCodeEnum) {
 		R r = new R();
 		r.put("code", 500);
+		r.put("success", false);
 		r.put("msg", String.format("%s  【错误代码：%s】",bizCodeEnum.getMsg(),bizCodeEnum.getCode()));
 		return r;
 	}
@@ -76,12 +79,14 @@ public class R<T> extends HashMap<String, Object> {
 	public static R ok(String msg) {
 		R r = new R();
 		r.put("msg", msg);
+		r.put("success", true);
 		return r;
 	}
 	
 	public static R ok(Map<String, Object> map) {
 		R r = new R();
 		r.putAll(map);
+		r.put("success", true);
 		return r;
 	}
 	
@@ -98,10 +103,17 @@ public class R<T> extends HashMap<String, Object> {
 
 		return (Integer) this.get("code");
 	}
+	public String getMsg() {
+		return (String)this.get("msg");
+	}
 
 	public  boolean getSuccess() {
 
 		return getCode()== 0;
+	}
+
+	public Object getData(){
+		return this.get("data");
 	}
 
 }

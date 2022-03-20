@@ -10,6 +10,7 @@ import com.qingshan.mall.thirdparty.config.OssConfig;
 import com.qingshan.mall.thirdparty.dto.mail.SendCodeInputDTO;
 import com.qingshan.mall.thirdparty.service.MailService;
 import lombok.AllArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -32,7 +33,7 @@ public class MailController {
      * @return
      */
     @PostMapping("/sendCodeMessage")
-    public R sendCodeMessage(@RequestBody SendCodeInputDTO dto){
+    public R sendCodeMessage(@Validated @RequestBody SendCodeInputDTO dto){
         mailService.sendCodeMessage(dto);
         return  R.ok();
     }

@@ -27,6 +27,9 @@ import java.util.Map;
 public class R<T> extends HashMap<String, Object> {
 	private static final long serialVersionUID = 1L;
 
+
+	private T data;
+
 	public R() {
 		put("code", 0);
 		put("success", true);
@@ -110,10 +113,6 @@ public class R<T> extends HashMap<String, Object> {
 	public  boolean getSuccess() {
 
 		return getCode()== 0;
-	}
-
-	public Object getData(){
-		return this.get("data");
 	}
 
 }

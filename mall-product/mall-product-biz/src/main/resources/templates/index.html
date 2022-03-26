@@ -95,11 +95,11 @@
   					</b>
         <ul>
           <li style="width: 150px">
-            <a href="http://auth.mall.com/login.html" class="li_2" th:if="${session.MEMBER_USER_INFO == null}">你好，请登录</a>
-            <a th:else class="aa">你好，[[${session.MEMBER_USER_INFO.nickname}]]</a>
+<!--            <a href="http://auth.mall.com/login.html" class="li_2" th:if="${session.MEMBER_USER_INFO == null}">你好，请登录</a>-->
+<!--            <a th:else class="aa">你好，[[${session.MEMBER_USER_INFO.nickname}]]</a>-->
           </li>
           <li>
-            <a href="http://auth.mall.com/reg.html" th:if="${session.MEMBER_USER_INFO == null}">免费注册</a>
+<!--            <a href="http://auth.mall.com/reg.html" th:if="${session.MEMBER_USER_INFO == null}">免费注册</a>-->
           </li>
           <span>|</span>
           <li>
@@ -115,12 +115,14 @@
       <div class="header_form">
         <input id="searchText" type="text" placeholder="" />
         <span style="background: url(../staticindex/img/img_12.png) 0 -1px;"></span>
-        <!--<button><i class="glyphicon"></i></button>-->
+        <!--<button><i class="gly
+
+        phicon"></i></button>-->
         <a href="#" ><img src="index/img/img_09.png" onclick="search()" /></a>
       </div>
       <div class="header_ico">
         <div class="header_gw">
-          <img src="index/img/img_15.png" />
+          <img src="index/img/img_15.png" />nickname
           <span><a href="/购物车\One_JDshop.html">我的购物车</a></span>
           <span>0</span>
         </div>

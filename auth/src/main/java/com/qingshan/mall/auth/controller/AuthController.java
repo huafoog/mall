@@ -4,6 +4,7 @@ import com.qingshan.common.dto.member.MemberDTO;
 import com.qingshan.common.dto.member.MemberLoginDTO;
 import com.qingshan.common.utils.R;
 import com.qingshan.common.constant.AuthServerConstant;
+import com.qingshan.common.vo.ResponseVO;
 import com.qingshan.mall.auth.feign.RemoteMemberFeignService;
 import com.qingshan.mall.auth.service.AuthService;
 import com.qingshan.mall.auth.utils.VerifyCode;
@@ -100,11 +101,12 @@ public class AuthController {
 
 
     @PostMapping("/login")
-    public R login(@Validated @RequestBody MemberLoginDTO vo, HttpSession session){
-        R<MemberDTO> res = memberFeignService.login(vo);
-        if (res.getSuccess()){
+    public ResponseVO login(@Validated @RequestBody MemberLoginDTO vo, HttpSession session){
+        ResponseVO<MemberDTO> res = memberFeignService.login(vo);
+        if (res.isSuccess()){
             session.setAttribute(AuthServerConstant.LOGIN_USER,res.getData());
-            return R.ok();
+            Object attribute = session.getAttribute(AuthServerConstant.LOGIN_USER);
+            return ResponseVO.failed(attribute);
         }else{
             return res;
         }

@@ -6,6 +6,7 @@ import com.qingshan.common.dto.member.MemberDTO;
 import com.qingshan.common.dto.member.MemberLoginDTO;
 import com.qingshan.common.dto.member.MemberRegisterDTO;
 import com.qingshan.common.utils.R;
+import com.qingshan.common.vo.ResponseVO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,5 +27,5 @@ public interface RemoteMemberFeignService {
     R register(@RequestBody MemberRegisterDTO dto);
 
     @PostMapping("/member/login")
-    R<MemberDTO> login(@RequestBody MemberLoginDTO vo);
+    ResponseVO<MemberDTO> login(@RequestBody MemberLoginDTO vo);
 }

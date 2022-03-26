@@ -7,6 +7,7 @@ import com.qingshan.common.constant.enums.BizCodeEnum;
 import com.qingshan.common.dto.member.MemberDTO;
 import com.qingshan.common.dto.member.MemberLoginDTO;
 import com.qingshan.common.dto.member.MemberRegisterDTO;
+import com.qingshan.common.vo.ResponseVO;
 import com.qingshan.mall.member.exception.PhoneExistException;
 import com.qingshan.mall.member.exception.UserNameExistException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,12 +48,12 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public R login(@RequestBody MemberLoginDTO vo){
+    public ResponseVO<MemberDTO> login(@RequestBody MemberLoginDTO vo){
         MemberDTO entity = memberService.login(vo);
         if (entity != null){
-            return R.ok(entity);
+            return ResponseVO.ok(entity);
         }else {
-            return R.error(BizCodeEnum.LOGINACCT_PASSWORD_INVAILD_EXCEPTION.getCode(),BizCodeEnum.LOGINACCT_PASSWORD_INVAILD_EXCEPTION.getMsg());
+            return ResponseVO.failed(BizCodeEnum.LOGINACCT_PASSWORD_INVAILD_EXCEPTION);
         }
     }
 

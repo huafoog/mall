@@ -4,7 +4,7 @@ import com.qingshan.mall.product.vo.AttrGroupRelationVo;
 import com.qingshan.mall.product.vo.AttrRespVo;
 import com.qingshan.mall.product.vo.AttrVo;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.qingshan.common.utils.PageUtils;
+import com.qingshan.common.core.utils.PageUtils;
 import com.qingshan.mall.product.entity.AttrEntity;
 
 import java.util.List;

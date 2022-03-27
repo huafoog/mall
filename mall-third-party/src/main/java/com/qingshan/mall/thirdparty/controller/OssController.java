@@ -5,7 +5,7 @@ import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.common.utils.BinaryUtil;
 import com.aliyun.oss.model.MatchMode;
 import com.aliyun.oss.model.PolicyConditions;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.utils.R;
 import com.qingshan.mall.thirdparty.config.OssConfig;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

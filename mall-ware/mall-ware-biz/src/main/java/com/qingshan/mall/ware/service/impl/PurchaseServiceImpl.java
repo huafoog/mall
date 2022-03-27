@@ -1,6 +1,6 @@
 package com.qingshan.mall.ware.service.impl;
 
-import com.qingshan.common.constant.WareConstant;
+import com.qingshan.common.core.constant.WareConstant;
 import com.qingshan.mall.ware.service.WareSkuService;
 import com.qingshan.mall.ware.vo.MergeVo;
 import com.qingshan.mall.ware.entity.PurchaseDetailEntity;
@@ -19,15 +19,13 @@ import java.util.stream.Collectors;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.Query;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.Query;
 
 import com.qingshan.mall.ware.dao.PurchaseDao;
 import com.qingshan.mall.ware.entity.PurchaseEntity;
 import com.qingshan.mall.ware.service.PurchaseService;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.validation.constraints.NotNull;
 
 
 @Service("purchaseService")

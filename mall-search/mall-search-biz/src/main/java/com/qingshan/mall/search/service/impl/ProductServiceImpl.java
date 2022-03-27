@@ -1,8 +1,8 @@
 package com.qingshan.mall.search.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.qingshan.common.to.es.SkuEsModel;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.to.es.SkuEsModel;
+import com.qingshan.common.core.utils.R;
 import com.qingshan.mall.search.config.MallElasticSearchConfig;
 import com.qingshan.mall.search.constant.EsConstants;
 import com.qingshan.mall.search.service.ProductService;
@@ -35,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public R createIndex(List<SkuEsModel> models) throws IOException {
         if (models == null || models.size() == 0){
-            return R.error("未获取到需要创建的数据");
+            return R.failed("未获取到需要创建的数据");
         }
         BulkRequest bulkRequest = new BulkRequest();
         for (SkuEsModel model : models) {
@@ -64,7 +64,7 @@ public class ProductServiceImpl implements ProductService {
             }
             sb.append("】插入失败，具体原因请查看日志");
             log.warn("====================批量創建索引過程中出現錯誤 上麵是錯誤信息 共有: " + count + " 條記錄==========================");
-            return R.error(sb.toString());
+            return R.failed(sb.toString());
 
         }
         return R.ok();

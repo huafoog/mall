@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.Query;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.Query;
 import com.qingshan.mall.product.entity.SpuImagesEntity;
 import com.qingshan.mall.product.service.SpuImagesService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;

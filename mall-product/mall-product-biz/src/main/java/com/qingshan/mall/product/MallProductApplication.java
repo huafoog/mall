@@ -1,5 +1,6 @@
 package com.qingshan.mall.product;
 
+import com.qingshan.mall.common.feign.EnableCommonFeignClients;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -54,9 +55,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  *  1）、编写异常处理类，使用@ControllerAdvice。
  *  2）、使用@ExceptionHandler标注方法可以处理的异常。
  */
-@EnableFeignClients(basePackages = {
-        "com.qingshan.mall.coupon.feign","com.qingshan.mall.ware.feign","com.qingshan.mall.search.feign"
-})
+@EnableCommonFeignClients
 @EnableDiscoveryClient
 @MapperScan("com.qingshan.mall.product.dao")
 @SpringBootApplication

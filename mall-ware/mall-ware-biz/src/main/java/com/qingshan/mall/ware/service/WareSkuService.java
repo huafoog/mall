@@ -1,8 +1,8 @@
 package com.qingshan.mall.ware.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.mall.ware.dto.WareSkuInfoDTO;
+import com.qingshan.common.core.dto.ware.WareSkuInfoDTO;
+import com.qingshan.common.core.utils.PageUtils;
 import com.qingshan.mall.ware.entity.WareSkuEntity;
 
 import java.util.List;

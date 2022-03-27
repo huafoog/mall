@@ -3,6 +3,7 @@ package com.qingshan.mall.ware.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.qingshan.common.core.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,9 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qingshan.mall.ware.entity.WareInfoEntity;
 import com.qingshan.mall.ware.service.WareInfoService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
-
+import com.qingshan.common.core.utils.PageUtils;
 
 
 /**

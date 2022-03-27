@@ -1,11 +1,11 @@
 package com.qingshan.mall.product.controller;
 
+import com.qingshan.common.core.utils.R;
 import com.qingshan.mall.product.entity.AttrAttrgroupRelationEntity;
 import com.qingshan.mall.product.service.AttrAttrgroupRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.utils.PageUtils;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -33,7 +33,7 @@ public class AttrAttrgroupRelationController {
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = attrAttrgroupRelationService.queryPage(params);
 
-        return R.ok().put("page", page);
+        return R.ok(page).put("page", page);
     }
 
 

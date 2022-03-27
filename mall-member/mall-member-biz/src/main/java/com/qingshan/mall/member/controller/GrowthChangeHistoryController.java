@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qingshan.mall.member.entity.GrowthChangeHistoryEntity;
 import com.qingshan.mall.member.service.GrowthChangeHistoryService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.R;
 
 
 
@@ -36,9 +36,8 @@ public class GrowthChangeHistoryController {
     @RequestMapping("/list")
     // @RequiresPermissions("member:growthchangehistory:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = growthChangeHistoryService.queryPage(params);
 
-        return R.ok().put("page", page);
+        return R.ok(growthChangeHistoryService.queryPage(params));
     }
 
 
@@ -50,7 +49,7 @@ public class GrowthChangeHistoryController {
     public R info(@PathVariable("id") Long id){
 		GrowthChangeHistoryEntity growthChangeHistory = growthChangeHistoryService.getById(id);
 
-        return R.ok().put("growthChangeHistory", growthChangeHistory);
+        return R.ok(growthChangeHistory);
     }
 
     /**

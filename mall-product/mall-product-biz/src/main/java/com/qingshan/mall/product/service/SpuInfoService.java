@@ -1,10 +1,9 @@
 package com.qingshan.mall.product.service;
 
-import com.qingshan.common.utils.R;
-import com.qingshan.mall.product.entity.SpuInfoDescEntity;
+import com.qingshan.common.core.utils.R;
 import com.qingshan.mall.product.vo.SpuSaveVo;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.qingshan.common.utils.PageUtils;
+import com.qingshan.common.core.utils.PageUtils;
 import com.qingshan.mall.product.entity.SpuInfoEntity;
 
 import java.util.Map;

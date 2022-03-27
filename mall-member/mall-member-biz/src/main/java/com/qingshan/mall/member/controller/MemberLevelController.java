@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qingshan.mall.member.entity.MemberLevelEntity;
 import com.qingshan.mall.member.service.MemberLevelService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.R;
 
 
 
@@ -36,9 +36,8 @@ public class MemberLevelController {
     @RequestMapping("/list")
     // @RequiresPermissions("member:memberlevel:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = memberLevelService.queryPage(params);
 
-        return R.ok().put("page", page);
+        return R.ok(memberLevelService.queryPage(params));
     }
 
 
@@ -49,8 +48,7 @@ public class MemberLevelController {
     // @RequiresPermissions("member:memberlevel:info")
     public R info(@PathVariable("id") Long id){
 		MemberLevelEntity memberLevel = memberLevelService.getById(id);
-
-        return R.ok().put("memberLevel", memberLevel);
+        return R.ok(memberLevel);
     }
 
     /**

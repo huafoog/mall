@@ -32,7 +32,7 @@
     <dependencies>
         <dependency>
             <groupId>com.qingshan.mall</groupId>
-            <artifactId>mall-common</artifactId>
+            <artifactId>mall-common-core</artifactId>
             <exclusions>
                 <exclusion>
                     <groupId>com.baomidou</groupId>

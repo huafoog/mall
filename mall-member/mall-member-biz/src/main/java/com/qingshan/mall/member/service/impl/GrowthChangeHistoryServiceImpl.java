@@ -5,8 +5,8 @@ import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.Query;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.Query;
 
 import com.qingshan.mall.member.dao.GrowthChangeHistoryDao;
 import com.qingshan.mall.member.entity.GrowthChangeHistoryEntity;
@@ -17,13 +17,13 @@ import com.qingshan.mall.member.service.GrowthChangeHistoryService;
 public class GrowthChangeHistoryServiceImpl extends ServiceImpl<GrowthChangeHistoryDao, GrowthChangeHistoryEntity> implements GrowthChangeHistoryService {
 
     @Override
-    public PageUtils queryPage(Map<String, Object> params) {
+    public IPage<GrowthChangeHistoryEntity> queryPage(Map<String, Object> params) {
         IPage<GrowthChangeHistoryEntity> page = this.page(
                 new Query<GrowthChangeHistoryEntity>().getPage(params),
                 new QueryWrapper<GrowthChangeHistoryEntity>()
         );
 
-        return new PageUtils(page);
+        return page;
     }
 
 }

@@ -1,8 +1,7 @@
 package com.qingshan.mall.search.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
-import com.qingshan.common.to.es.SkuEsModel;
+import com.qingshan.common.core.to.es.SkuEsModel;
 import com.qingshan.mall.search.config.MallElasticSearchConfig;
 import com.qingshan.mall.search.constant.EsConstants;
 import com.qingshan.mall.search.service.MallSearchService;
@@ -32,11 +31,9 @@ import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightField;
 import org.elasticsearch.search.sort.SortOrder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import javax.annotation.Resource;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

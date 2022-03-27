@@ -4,19 +4,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import com.qingshan.common.core.utils.R;
 import com.qingshan.mall.product.entity.ProductAttrValueEntity;
 import com.qingshan.mall.product.service.ProductAttrValueService;
-import com.qingshan.mall.product.vo.AttrGroupRelationVo;
 import com.qingshan.mall.product.vo.AttrRespVo;
 import com.qingshan.mall.product.vo.AttrVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.qingshan.mall.product.entity.AttrEntity;
 import com.qingshan.mall.product.service.AttrService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
-
+import com.qingshan.common.core.utils.PageUtils;
 
 
 /**

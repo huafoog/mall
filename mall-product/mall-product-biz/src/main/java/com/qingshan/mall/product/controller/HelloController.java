@@ -1,8 +1,8 @@
 package com.qingshan.mall.product.controller;
 
-import com.qingshan.common.to.SpuBoundTo;
-import com.qingshan.common.utils.R;
-import com.qingshan.mall.coupon.feign.CouponFeignService;
+import com.qingshan.common.core.to.SpuBoundTo;
+import com.qingshan.common.core.utils.R;
+import com.qingshan.mall.common.feign.feign.coupon.RemoteCouponFeignService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class HelloController {
 
-    private final CouponFeignService couponFeignService;
+    private final RemoteCouponFeignService couponFeignService;
 
 
     @GetMapping("/hello")

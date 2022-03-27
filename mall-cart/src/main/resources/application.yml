@@ -1,0 +1,30 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: mall-nacos:8848
+  application:
+    name: mall-cart
+  session:
+    store-type: redis
+  thymeleaf:
+    cache: false
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-not-delete-value: 1
+      logic-delete-value: 0
+logging:
+  level:
+    com.qingshan.mall.cart: debug
+server:
+  port: 21000
+
+feign:
+  client:
+    config:
+      default:
+        - connectTimeout: 60000
+        - readTimeout: 60000

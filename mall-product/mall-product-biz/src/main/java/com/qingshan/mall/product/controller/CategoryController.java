@@ -2,20 +2,13 @@ package com.qingshan.mall.product.controller;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
+import com.qingshan.common.core.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import com.qingshan.mall.product.entity.CategoryEntity;
 import com.qingshan.mall.product.service.CategoryService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
-
-import javax.validation.Valid;
 
 
 /**

@@ -3,14 +3,15 @@ package com.qingshan.mall.coupon.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.qingshan.common.core.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.qingshan.mall.coupon.entity.SpuBoundsEntity;
 import com.qingshan.mall.coupon.service.SpuBoundsService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
-
+import com.qingshan.common.core.utils.PageUtils;
 
 
 /**
@@ -31,10 +32,8 @@ public class SpuBoundsController {
      */
     @RequestMapping("/list")
     //@RequiresPermissions("coupon:spubounds:list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = spuBoundsService.queryPage(params);
-
-        return R.ok().put("page", page);
+    public R<IPage> list(@RequestParam Map<String, Object> params){
+        return R.ok(spuBoundsService.queryPage(params));
     }
 
 
@@ -46,7 +45,7 @@ public class SpuBoundsController {
     public R info(@PathVariable("id") Long id){
 		SpuBoundsEntity spuBounds = spuBoundsService.getById(id);
 
-        return R.ok().put("spuBounds", spuBounds);
+        return R.ok(spuBounds);
     }
 
     /**

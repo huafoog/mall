@@ -2,9 +2,8 @@ package com.qingshan.mall.product.service;
 
 import com.qingshan.mall.product.vo.AttrGroupWithAttrsVo;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.qingshan.common.utils.PageUtils;
+import com.qingshan.common.core.utils.PageUtils;
 import com.qingshan.mall.product.entity.AttrGroupEntity;
-import com.qingshan.mall.product.vo.AttrGroupWithAttrsVo;
 import com.qingshan.mall.product.vo.sku.SpuItemAttrGroupVO;
 
 import java.util.List;

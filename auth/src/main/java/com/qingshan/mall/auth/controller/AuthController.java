@@ -1,15 +1,15 @@
 package com.qingshan.mall.auth.controller;
 
-import com.qingshan.common.dto.member.MemberDTO;
-import com.qingshan.common.dto.member.MemberLoginDTO;
-import com.qingshan.common.utils.R;
-import com.qingshan.common.constant.AuthServerConstant;
-import com.qingshan.common.vo.ResponseVO;
-import com.qingshan.mall.auth.feign.RemoteMemberFeignService;
+import com.qingshan.common.core.dto.member.MemberDTO;
+import com.qingshan.common.core.dto.member.MemberLoginDTO;
+import com.qingshan.common.core.constant.AuthServerConstant;
+import com.qingshan.common.core.utils.R;
 import com.qingshan.mall.auth.service.AuthService;
 import com.qingshan.mall.auth.utils.VerifyCode;
 import com.qingshan.mall.auth.vo.UserRegisterVO;
+import com.qingshan.mall.common.feign.feign.member.RemoteMemberFeignService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +20,6 @@ import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 登录控制器
@@ -31,9 +29,9 @@ import java.util.Map;
 @RequestMapping("/auth")
 @AllArgsConstructor
 public class AuthController {
-
     private final AuthService authService;
     private final RemoteMemberFeignService memberFeignService;
+    private final RedisTemplate redisTemplate;
 
     /* 获取验证码图片*/
 
@@ -84,10 +82,8 @@ public class AuthController {
     public R register(@Validated @RequestBody UserRegisterVO vo){
         //1、校验验证码
         R result = authService.register(vo);
-        if (!result.getSuccess()){
-            Map<String, Object> errors = new HashMap<>();
-            errors.put("code", result.get("msg"));
-            return R.error(result.getMsg());
+        if (!result.isSuccess()){
+            return R.failed(result.getMsg());
         }
         //注册成功回到登录页
         //return "redirect:http://auth.gulimall.com/login.html";
@@ -101,12 +97,11 @@ public class AuthController {
 
 
     @PostMapping("/login")
-    public ResponseVO login(@Validated @RequestBody MemberLoginDTO vo, HttpSession session){
-        ResponseVO<MemberDTO> res = memberFeignService.login(vo);
+    public R login(@Validated @RequestBody MemberLoginDTO vo, HttpSession session){
+        R<MemberDTO> res = memberFeignService.login(vo);
         if (res.isSuccess()){
             session.setAttribute(AuthServerConstant.LOGIN_USER,res.getData());
-            Object attribute = session.getAttribute(AuthServerConstant.LOGIN_USER);
-            return ResponseVO.failed(attribute);
+            return R.ok();
         }else{
             return res;
         }

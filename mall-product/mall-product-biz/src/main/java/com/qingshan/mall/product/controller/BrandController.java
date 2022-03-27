@@ -1,15 +1,13 @@
 package com.qingshan.mall.product.controller;
 
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.R;
 import com.qingshan.mall.product.entity.BrandEntity;
 import com.qingshan.mall.product.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.PathVariable;

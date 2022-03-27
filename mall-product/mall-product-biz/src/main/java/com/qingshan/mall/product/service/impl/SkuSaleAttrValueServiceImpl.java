@@ -1,7 +1,7 @@
 package com.qingshan.mall.product.service.impl;
 
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.Query;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.Query;
 import com.qingshan.mall.product.entity.SkuSaleAttrValueEntity;
 import com.qingshan.mall.product.service.SkuSaleAttrValueService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -32,6 +32,11 @@ public class SkuSaleAttrValueServiceImpl extends ServiceImpl<SkuSaleAttrValueDao
     public List<SkuItemSaleAttrVO> getSaleAttrBySpuId(Long spuId) {
         SkuSaleAttrValueDao baseMapper = this.getBaseMapper();
         return baseMapper.getSaleAttrBySpuId(spuId);
+    }
+
+    @Override
+    public List<String> getSkuSaleAttrValuesAsStringList(Long skuId) {
+        return baseMapper.getSkuSaleAttrValuesAsStringList(skuId);
     }
 
 }

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qingshan.mall.member.entity.IntegrationChangeHistoryEntity;
 import com.qingshan.mall.member.service.IntegrationChangeHistoryService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.R;
 
 
 
@@ -36,9 +36,7 @@ public class IntegrationChangeHistoryController {
     @RequestMapping("/list")
     // @RequiresPermissions("member:integrationchangehistory:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = integrationChangeHistoryService.queryPage(params);
-
-        return R.ok().put("page", page);
+        return R.ok(integrationChangeHistoryService.queryPage(params));
     }
 
 
@@ -49,8 +47,7 @@ public class IntegrationChangeHistoryController {
     // @RequiresPermissions("member:integrationchangehistory:info")
     public R info(@PathVariable("id") Long id){
 		IntegrationChangeHistoryEntity integrationChangeHistory = integrationChangeHistoryService.getById(id);
-
-        return R.ok().put("integrationChangeHistory", integrationChangeHistory);
+        return R.ok(integrationChangeHistory);
     }
 
     /**

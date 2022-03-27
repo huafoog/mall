@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.qingshan.common.core.utils.R;
 import com.qingshan.mall.product.entity.BrandEntity;
 import com.qingshan.mall.product.vo.BrandVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -13,9 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.qingshan.mall.product.entity.CategoryBrandRelationEntity;
 import com.qingshan.mall.product.service.CategoryBrandRelationService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
-
+import com.qingshan.common.core.utils.PageUtils;
 
 
 /**

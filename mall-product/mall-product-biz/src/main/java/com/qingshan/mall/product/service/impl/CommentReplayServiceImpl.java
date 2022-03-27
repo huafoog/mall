@@ -1,7 +1,7 @@
 package com.qingshan.mall.product.service.impl;
 
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.Query;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.Query;
 import com.qingshan.mall.product.entity.CommentReplayEntity;
 import com.qingshan.mall.product.service.CommentReplayService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;

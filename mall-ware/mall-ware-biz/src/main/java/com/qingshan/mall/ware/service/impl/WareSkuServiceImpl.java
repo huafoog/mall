@@ -1,8 +1,9 @@
 package com.qingshan.mall.ware.service.impl;
 
-import com.qingshan.common.utils.R;
-import com.qingshan.mall.product.feign.ProductFeignService;
-import com.qingshan.mall.ware.dto.WareSkuInfoDTO;
+import com.qingshan.common.core.dto.product.sku.SkuInfoDTO;
+import com.qingshan.common.core.dto.ware.WareSkuInfoDTO;
+import com.qingshan.common.core.utils.R;
+import com.qingshan.mall.common.feign.feign.product.RemoteProductFeignService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,8 @@ import java.util.stream.Collectors;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.Query;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.Query;
 
 import com.qingshan.mall.ware.dao.WareSkuDao;
 import com.qingshan.mall.ware.entity.WareSkuEntity;
@@ -28,7 +29,7 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
 
     private final WareSkuDao wareSkuDao;
 
-    private final ProductFeignService productFeignService;
+    private final RemoteProductFeignService productFeignService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -70,11 +71,10 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
             //1、自己catch异常
             //TODO 还可以用什么办法让异常出现以后不回滚？高级
             try {
-                R info = productFeignService.info(skuId);
-                Map<String,Object> data = (Map<String, Object>) info.get("skuInfo");
-
+                R<SkuInfoDTO> info = productFeignService.info(skuId);
+                SkuInfoDTO data = info.getData();
                 if(info.getCode() == 0){
-                    skuEntity.setSkuName((String) data.get("skuName"));
+                    skuEntity.setSkuName(data.getSkuName());
                 }
             }catch (Exception e){
 

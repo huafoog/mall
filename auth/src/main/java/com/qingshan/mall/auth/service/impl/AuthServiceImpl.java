@@ -1,15 +1,15 @@
 package com.qingshan.mall.auth.service.impl;
 
 import com.alibaba.nacos.client.utils.StringUtils;
-import com.qingshan.common.constant.enums.BizCodeEnum;
-import com.qingshan.common.dto.member.MemberRegisterDTO;
-import com.qingshan.common.utils.R;
-import com.qingshan.common.constant.AuthServerConstant;
-import com.qingshan.mall.auth.feign.RemoteMemberFeignService;
-import com.qingshan.mall.auth.feign.third.part.RemoteMailService;
-import com.qingshan.mall.auth.mail.SendCodeInputDTO;
+import com.qingshan.common.core.constant.enums.BizCodeEnum;
+import com.qingshan.common.core.dto.member.MemberRegisterDTO;
+import com.qingshan.common.core.constant.AuthServerConstant;
+import com.qingshan.common.core.dto.third.SendCodeInputDTO;
+import com.qingshan.common.core.utils.R;
 import com.qingshan.mall.auth.service.AuthService;
 import com.qingshan.mall.auth.vo.UserRegisterVO;
+import com.qingshan.mall.common.feign.feign.member.RemoteMemberFeignService;
+import com.qingshan.mall.common.feign.feign.third.RemoteMailService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -53,10 +53,10 @@ public class AuthServiceImpl implements AuthService {
                 R r = memberFeignService.register(memberRegisterDTO);
                 return r;
             } else {
-                return R.error("验证码错误");
+                return R.failed("验证码错误");
             }
         }
-        return R.error("验证码错误");
+        return R.failed("验证码错误");
     }
 
     @Override
@@ -68,7 +68,7 @@ public class AuthServiceImpl implements AuthService {
             long l = Long.parseLong(redisCode.split("_")[1]);
             if (System.currentTimeMillis() -l < 60000){
                 //60秒内不能再发
-                return R.error(BizCodeEnum.SMS_CODE_EXCEPTION.getCode(),BizCodeEnum.SMS_CODE_EXCEPTION.getMsg());
+                return R.failed(BizCodeEnum.SMS_CODE_EXCEPTION.getCode(),BizCodeEnum.SMS_CODE_EXCEPTION.getMsg());
             }
         }
 

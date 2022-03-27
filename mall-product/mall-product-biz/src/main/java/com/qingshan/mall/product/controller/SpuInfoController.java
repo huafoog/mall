@@ -1,7 +1,7 @@
 package com.qingshan.mall.product.controller;
 
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.R;
 import com.qingshan.mall.product.entity.SpuInfoEntity;
 import com.qingshan.mall.product.service.SpuInfoService;
 import com.qingshan.mall.product.vo.SpuSaveVo;

@@ -1,7 +1,7 @@
 package com.qingshan.mall.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.qingshan.common.utils.PageUtils;
+import com.qingshan.common.core.utils.PageUtils;
 import com.qingshan.mall.product.entity.CategoryEntity;
 import com.qingshan.mall.product.vo.Catelog2Vo;
 

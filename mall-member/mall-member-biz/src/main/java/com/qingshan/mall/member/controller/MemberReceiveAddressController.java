@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qingshan.mall.member.entity.MemberReceiveAddressEntity;
 import com.qingshan.mall.member.service.MemberReceiveAddressService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.R;
 
 
 
@@ -38,7 +38,7 @@ public class MemberReceiveAddressController {
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = memberReceiveAddressService.queryPage(params);
 
-        return R.ok().put("page", page);
+        return R.ok(page);
     }
 
 
@@ -50,7 +50,7 @@ public class MemberReceiveAddressController {
     public R info(@PathVariable("id") Long id){
 		MemberReceiveAddressEntity memberReceiveAddress = memberReceiveAddressService.getById(id);
 
-        return R.ok().put("memberReceiveAddress", memberReceiveAddress);
+        return R.ok(memberReceiveAddress);
     }
 
     /**

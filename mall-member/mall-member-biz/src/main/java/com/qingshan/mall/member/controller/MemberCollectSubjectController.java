@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qingshan.mall.member.entity.MemberCollectSubjectEntity;
 import com.qingshan.mall.member.service.MemberCollectSubjectService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.R;
 
 
 
@@ -36,9 +36,7 @@ public class MemberCollectSubjectController {
     @RequestMapping("/list")
     // @RequiresPermissions("member:membercollectsubject:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = memberCollectSubjectService.queryPage(params);
-
-        return R.ok().put("page", page);
+        return R.ok(memberCollectSubjectService.queryPage(params));
     }
 
 
@@ -49,8 +47,7 @@ public class MemberCollectSubjectController {
     // @RequiresPermissions("member:membercollectsubject:info")
     public R info(@PathVariable("id") Long id){
 		MemberCollectSubjectEntity memberCollectSubject = memberCollectSubjectService.getById(id);
-
-        return R.ok().put("memberCollectSubject", memberCollectSubject);
+        return R.ok(memberCollectSubject);
     }
 
     /**

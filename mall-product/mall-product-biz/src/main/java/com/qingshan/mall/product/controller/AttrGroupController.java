@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import com.qingshan.common.core.utils.R;
 import com.qingshan.mall.product.entity.AttrEntity;
-import com.qingshan.mall.product.entity.CategoryEntity;
 import com.qingshan.mall.product.service.AttrAttrgroupRelationService;
 import com.qingshan.mall.product.service.AttrService;
 import com.qingshan.mall.product.service.CategoryService;
@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.qingshan.mall.product.entity.AttrGroupEntity;
 import com.qingshan.mall.product.service.AttrGroupService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
-
+import com.qingshan.common.core.utils.PageUtils;
 
 
 /**

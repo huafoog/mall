@@ -3,11 +3,10 @@ package com.qingshan.mall.member.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import com.qingshan.common.constant.enums.BizCodeEnum;
-import com.qingshan.common.dto.member.MemberDTO;
-import com.qingshan.common.dto.member.MemberLoginDTO;
-import com.qingshan.common.dto.member.MemberRegisterDTO;
-import com.qingshan.common.vo.ResponseVO;
+import com.qingshan.common.core.constant.enums.BizCodeEnum;
+import com.qingshan.common.core.dto.member.MemberDTO;
+import com.qingshan.common.core.dto.member.MemberLoginDTO;
+import com.qingshan.common.core.dto.member.MemberRegisterDTO;
 import com.qingshan.mall.member.exception.PhoneExistException;
 import com.qingshan.mall.member.exception.UserNameExistException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.qingshan.mall.member.entity.MemberEntity;
 import com.qingshan.mall.member.service.MemberService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.R;
 
 
 
@@ -40,20 +39,20 @@ public class MemberController {
             memberService.register(vo);
             //异常机制：通过捕获对应的自定义异常判断出现何种错误并封装错误信息
         }catch (PhoneExistException e){
-            return R.error(BizCodeEnum.PHONE_EXIST_EXCEPTION.getCode(),BizCodeEnum.PHONE_EXIST_EXCEPTION.getMsg());
+            return R.failed(BizCodeEnum.PHONE_EXIST_EXCEPTION);
         }catch (UserNameExistException e){
-            return R.error(BizCodeEnum.USER_EXIST_EXCEPTION.getCode(),BizCodeEnum.USER_EXIST_EXCEPTION.getMsg());
+            return R.failed(BizCodeEnum.USER_EXIST_EXCEPTION);
         }
         return R.ok();
     }
 
     @PostMapping("/login")
-    public ResponseVO<MemberDTO> login(@RequestBody MemberLoginDTO vo){
+    public R<MemberDTO> login(@RequestBody MemberLoginDTO vo){
         MemberDTO entity = memberService.login(vo);
         if (entity != null){
-            return ResponseVO.ok(entity);
+            return R.ok(entity);
         }else {
-            return ResponseVO.failed(BizCodeEnum.LOGINACCT_PASSWORD_INVAILD_EXCEPTION);
+            return R.failed(BizCodeEnum.LOGINACCT_PASSWORD_INVAILD_EXCEPTION);
         }
     }
 
@@ -63,9 +62,8 @@ public class MemberController {
     @RequestMapping("/list")
     // @RequiresPermissions("member:member:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = memberService.queryPage(params);
 
-        return R.ok().put("page", page);
+        return R.ok(memberService.queryPage(params));
     }
 
 
@@ -75,9 +73,7 @@ public class MemberController {
     @RequestMapping("/info/{id}")
     // @RequiresPermissions("member:member:info")
     public R info(@PathVariable("id") Long id){
-		MemberEntity member = memberService.getById(id);
-
-        return R.ok().put("member", member);
+        return R.ok(memberService.getById(id));
     }
 
     /**

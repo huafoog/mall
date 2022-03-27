@@ -1,10 +1,10 @@
 package com.qingshan.mall.member.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.qingshan.common.dto.member.MemberDTO;
-import com.qingshan.common.dto.member.MemberLoginDTO;
-import com.qingshan.common.dto.member.MemberRegisterDTO;
-import com.qingshan.common.utils.PageUtils;
+import com.qingshan.common.core.dto.member.MemberDTO;
+import com.qingshan.common.core.dto.member.MemberLoginDTO;
+import com.qingshan.common.core.dto.member.MemberRegisterDTO;
+import com.qingshan.common.core.utils.PageUtils;
 import com.qingshan.mall.member.entity.MemberEntity;
 import com.qingshan.mall.member.exception.PhoneExistException;
 import com.qingshan.mall.member.exception.UserNameExistException;

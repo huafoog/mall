@@ -1,6 +1,6 @@
 package com.qingshan.mall.product.service;
 
-import com.qingshan.common.utils.PageUtils;
+import com.qingshan.common.core.utils.PageUtils;
 import com.qingshan.mall.product.entity.SpuInfoDescEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 

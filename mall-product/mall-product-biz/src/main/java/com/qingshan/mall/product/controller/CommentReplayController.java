@@ -1,7 +1,7 @@
 package com.qingshan.mall.product.controller;
 
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.R;
 import com.qingshan.mall.product.entity.CommentReplayEntity;
 import com.qingshan.mall.product.service.CommentReplayService;
 import org.springframework.beans.factory.annotation.Autowired;

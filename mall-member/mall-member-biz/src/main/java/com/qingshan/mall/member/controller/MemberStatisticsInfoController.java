@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qingshan.mall.member.entity.MemberStatisticsInfoEntity;
 import com.qingshan.mall.member.service.MemberStatisticsInfoService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.R;
 
 
 
@@ -38,7 +38,7 @@ public class MemberStatisticsInfoController {
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = memberStatisticsInfoService.queryPage(params);
 
-        return R.ok().put("page", page);
+        return R.ok(page);
     }
 
 
@@ -50,7 +50,7 @@ public class MemberStatisticsInfoController {
     public R info(@PathVariable("id") Long id){
 		MemberStatisticsInfoEntity memberStatisticsInfo = memberStatisticsInfoService.getById(id);
 
-        return R.ok().put("memberStatisticsInfo", memberStatisticsInfo);
+        return R.ok(memberStatisticsInfo);
     }
 
     /**

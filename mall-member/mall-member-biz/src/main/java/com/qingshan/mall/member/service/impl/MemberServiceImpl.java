@@ -1,8 +1,8 @@
 package com.qingshan.mall.member.service.impl;
 
-import com.qingshan.common.dto.member.MemberDTO;
-import com.qingshan.common.dto.member.MemberLoginDTO;
-import com.qingshan.common.dto.member.MemberRegisterDTO;
+import com.qingshan.common.core.dto.member.MemberDTO;
+import com.qingshan.common.core.dto.member.MemberLoginDTO;
+import com.qingshan.common.core.dto.member.MemberRegisterDTO;
 import com.qingshan.mall.member.dao.MemberLevelDao;
 import com.qingshan.mall.member.entity.MemberLevelEntity;
 import com.qingshan.mall.member.exception.PhoneExistException;
@@ -15,8 +15,8 @@ import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.Query;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.Query;
 
 import com.qingshan.mall.member.dao.MemberDao;
 import com.qingshan.mall.member.entity.MemberEntity;

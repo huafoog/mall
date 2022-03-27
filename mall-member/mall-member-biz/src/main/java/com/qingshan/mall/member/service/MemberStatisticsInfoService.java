@@ -1,7 +1,7 @@
 package com.qingshan.mall.member.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.qingshan.common.utils.PageUtils;
+import com.qingshan.common.core.utils.PageUtils;
 import com.qingshan.mall.member.entity.MemberStatisticsInfoEntity;
 
 import java.util.Map;

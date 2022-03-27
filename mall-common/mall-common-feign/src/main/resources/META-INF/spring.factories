@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=
+com.xxx.factory.DataProducerFallbackFactory,
+com.xxx.util.IdWorker,
+com.xxx.util.LogUtil,
+com.xxx.exception.GlobalExceptionHandler

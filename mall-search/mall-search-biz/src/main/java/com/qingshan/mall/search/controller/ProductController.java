@@ -1,10 +1,9 @@
 package com.qingshan.mall.search.controller;
 
-import com.qingshan.common.to.es.SkuEsModel;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.to.es.SkuEsModel;
+import com.qingshan.common.core.utils.R;
 import com.qingshan.mall.search.service.ProductService;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

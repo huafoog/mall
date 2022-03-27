@@ -1,6 +1,6 @@
 package com.qingshan.mall.search.vo;
 
-import com.qingshan.common.to.es.SkuEsModel;
+import com.qingshan.common.core.to.es.SkuEsModel;
 import lombok.Data;
 
 import java.util.List;

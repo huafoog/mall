@@ -14,8 +14,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qingshan.mall.product.dao.AttrAttrgroupRelationDao;
 import com.qingshan.mall.product.entity.AttrAttrgroupRelationEntity;
 import com.qingshan.mall.product.service.AttrAttrgroupRelationService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.Query;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.Query;
 
 
 

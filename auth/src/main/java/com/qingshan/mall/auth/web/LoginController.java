@@ -1,6 +1,6 @@
 package com.qingshan.mall.auth.web;
 
-import com.qingshan.common.constant.AuthServerConstant;
+import com.qingshan.common.core.constant.AuthServerConstant;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 

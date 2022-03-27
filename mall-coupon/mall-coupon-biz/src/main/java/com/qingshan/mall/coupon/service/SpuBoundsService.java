@@ -1,7 +1,8 @@
 package com.qingshan.mall.coupon.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.qingshan.common.utils.PageUtils;
+import com.qingshan.common.core.utils.PageUtils;
 import com.qingshan.mall.coupon.entity.SpuBoundsEntity;
 
 import java.util.Map;
@@ -15,6 +16,6 @@ import java.util.Map;
  */
 public interface SpuBoundsService extends IService<SpuBoundsEntity> {
 
-    PageUtils queryPage(Map<String, Object> params);
+    IPage<SpuBoundsEntity> queryPage(Map<String, Object> params);
 }
 

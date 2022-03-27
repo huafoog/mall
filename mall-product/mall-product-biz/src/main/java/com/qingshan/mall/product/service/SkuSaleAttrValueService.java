@@ -1,6 +1,6 @@
 package com.qingshan.mall.product.service;
 
-import com.qingshan.common.utils.PageUtils;
+import com.qingshan.common.core.utils.PageUtils;
 import com.qingshan.mall.product.entity.SkuSaleAttrValueEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.qingshan.mall.product.vo.sku.SkuItemSaleAttrVO;
@@ -20,6 +20,8 @@ public interface SkuSaleAttrValueService extends IService<SkuSaleAttrValueEntity
     PageUtils queryPage(Map<String, Object> params);
 
     List<SkuItemSaleAttrVO> getSaleAttrBySpuId(Long spuId);
+
+    List<String> getSkuSaleAttrValuesAsStringList(Long skuId);
 
 }
 

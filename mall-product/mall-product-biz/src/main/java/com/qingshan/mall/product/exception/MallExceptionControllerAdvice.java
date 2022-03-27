@@ -1,8 +1,8 @@
 package com.qingshan.mall.product.exception;
 
-import com.qingshan.common.constant.enums.BizCodeEnum;
-import com.qingshan.common.exception.RRException;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.constant.enums.BizCodeEnum;
+import com.qingshan.common.core.exception.RRException;
+import com.qingshan.common.core.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -29,19 +29,18 @@ public class MallExceptionControllerAdvice {
         bindingResult.getFieldErrors().forEach((fieldError)->{
             errorMap.put(fieldError.getField(),fieldError.getDefaultMessage());
         });
-        return R.error(BizCodeEnum.VAILD_EXCEPTION.getCode(), BizCodeEnum.VAILD_EXCEPTION.getMsg()).put("data",errorMap);
+        return R.failed(BizCodeEnum.VAILD_EXCEPTION).put("data",errorMap);
     }
 
     @ExceptionHandler(value= RRException.class)
     public R handleRRException(RRException e){
-        return R.error(e.getBizCode(),e.getCode());
+        return R.failed(e.getBizCode());
     }
 
     @ExceptionHandler(value = Throwable.class)
     public R handleException(Throwable throwable){
-
         log.error("错误：",throwable);
-        return R.error(BizCodeEnum.UNKNOW_EXCEPTION.getCode(), BizCodeEnum.UNKNOW_EXCEPTION.getMsg());
+        return R.failed(BizCodeEnum.UNKNOW_EXCEPTION);
     }
 
 

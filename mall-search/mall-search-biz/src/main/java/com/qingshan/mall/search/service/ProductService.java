@@ -1,7 +1,7 @@
 package com.qingshan.mall.search.service;
 
-import com.qingshan.common.to.es.SkuEsModel;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.to.es.SkuEsModel;
+import com.qingshan.common.core.utils.R;
 
 import java.io.IOException;
 import java.util.List;

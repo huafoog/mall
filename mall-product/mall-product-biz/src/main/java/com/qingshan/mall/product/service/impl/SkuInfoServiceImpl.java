@@ -1,7 +1,7 @@
 package com.qingshan.mall.product.service.impl;
 
-import com.qingshan.common.constant.enums.BizCodeEnum;
-import com.qingshan.common.exception.RRException;
+import com.qingshan.common.core.constant.enums.BizCodeEnum;
+import com.qingshan.common.core.exception.RRException;
 import com.qingshan.mall.product.entity.SkuImagesEntity;
 import com.qingshan.mall.product.entity.SpuInfoDescEntity;
 import com.qingshan.mall.product.service.*;
@@ -17,8 +17,8 @@ import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.Query;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.Query;
 
 import com.qingshan.mall.product.dao.SkuInfoDao;
 import com.qingshan.mall.product.entity.SkuInfoEntity;

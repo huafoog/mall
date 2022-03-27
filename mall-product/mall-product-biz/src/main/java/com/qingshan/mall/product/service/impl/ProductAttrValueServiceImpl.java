@@ -1,17 +1,13 @@
 package com.qingshan.mall.product.service.impl;
 
-import com.qingshan.mall.product.dao.AttrGroupDao;
-import com.qingshan.mall.product.vo.sku.SpuItemAttrGroupVO;
-import lombok.AllArgsConstructor;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.Query;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.Query;
 import com.qingshan.mall.product.entity.ProductAttrValueEntity;
 import com.qingshan.mall.product.service.ProductAttrValueService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;

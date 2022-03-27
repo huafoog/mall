@@ -1,19 +1,19 @@
 package com.qingshan.mall.product.service.impl;
 
-import com.qingshan.common.constant.ProductConstants;
-import com.qingshan.common.to.SkuReductionTo;
-import com.qingshan.common.to.SpuBoundTo;
-import com.qingshan.common.to.es.SkuEsModel;
-import com.qingshan.common.utils.R;
-import com.qingshan.mall.coupon.feign.CouponFeignService;
+import com.qingshan.common.core.constant.ProductConstants;
+import com.qingshan.common.core.dto.ware.WareSkuInfoDTO;
+import com.qingshan.common.core.to.SkuReductionTo;
+import com.qingshan.common.core.to.SpuBoundTo;
+import com.qingshan.common.core.to.es.SkuEsModel;
+import com.qingshan.common.core.utils.R;
+import com.qingshan.mall.common.feign.feign.coupon.RemoteCouponFeignService;
+import com.qingshan.mall.common.feign.feign.search.RemoteSearchProductFeignService;
+import com.qingshan.mall.common.feign.feign.ware.RemoteWareSkuFeignService;
 import com.qingshan.mall.product.dao.BrandDao;
 import com.qingshan.mall.product.dao.CategoryDao;
 import com.qingshan.mall.product.entity.*;
 import com.qingshan.mall.product.service.*;
 import com.qingshan.mall.product.vo.*;
-import com.qingshan.mall.search.feign.SearchProductFeignService;
-import com.qingshan.mall.ware.dto.WareSkuInfoDTO;
-import com.qingshan.mall.ware.feign.WareSkuFeignService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -28,8 +28,8 @@ import java.util.stream.Collectors;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.Query;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.Query;
 
 import com.qingshan.mall.product.dao.SpuInfoDao;
 import org.springframework.transaction.annotation.Transactional;
@@ -54,16 +54,16 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
 
     private final SkuSaleAttrValueService skuSaleAttrValueService;
 
-    private final CouponFeignService couponFeignService;
+    private final RemoteCouponFeignService couponFeignService;
 
     private final CategoryDao categoryDao;
 
 
     private final BrandDao brandDao;
 
-    private final WareSkuFeignService wareSkuFeignService;
+    private final RemoteWareSkuFeignService wareSkuFeignService;
     
-    private final SearchProductFeignService searchProductFeignService;
+    private final RemoteSearchProductFeignService searchProductFeignService;
 
 
     @Override

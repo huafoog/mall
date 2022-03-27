@@ -1,7 +1,7 @@
 package com.qingshan.mall.product.controller;
 
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.R;
 import com.qingshan.mall.product.entity.SkuInfoEntity;
 import com.qingshan.mall.product.service.SkuInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +44,7 @@ public class SkuInfoController {
     //@RequiresPermissions("product:skuinfo:info")
     public R info(@PathVariable("skuId") Long skuId){
 		SkuInfoEntity skuInfo = skuInfoService.getById(skuId);
-
-        return R.ok().put("skuInfo", skuInfo);
+        return R.ok(skuInfo);
     }
 
     /**

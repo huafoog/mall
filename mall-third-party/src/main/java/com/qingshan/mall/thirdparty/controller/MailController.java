@@ -1,21 +1,11 @@
 package com.qingshan.mall.thirdparty.controller;
 
-import com.aliyun.oss.OSS;
-import com.aliyun.oss.OSSClientBuilder;
-import com.aliyun.oss.common.utils.BinaryUtil;
-import com.aliyun.oss.model.MatchMode;
-import com.aliyun.oss.model.PolicyConditions;
-import com.qingshan.common.utils.R;
-import com.qingshan.mall.thirdparty.config.OssConfig;
+import com.qingshan.common.core.utils.R;
 import com.qingshan.mall.thirdparty.dto.mail.SendCodeInputDTO;
 import com.qingshan.mall.thirdparty.service.MailService;
 import lombok.AllArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 /**
  * Oss控制

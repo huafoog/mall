@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qingshan.mall.member.entity.MemberCollectSpuEntity;
 import com.qingshan.mall.member.service.MemberCollectSpuService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
+import com.qingshan.common.core.utils.PageUtils;
+import com.qingshan.common.core.utils.R;
 
 
 
@@ -36,9 +36,8 @@ public class MemberCollectSpuController {
     @RequestMapping("/list")
     // @RequiresPermissions("member:membercollectspu:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = memberCollectSpuService.queryPage(params);
 
-        return R.ok().put("page", page);
+        return R.ok(memberCollectSpuService.queryPage(params));
     }
 
 
@@ -50,7 +49,7 @@ public class MemberCollectSpuController {
     public R info(@PathVariable("id") Long id){
 		MemberCollectSpuEntity memberCollectSpu = memberCollectSpuService.getById(id);
 
-        return R.ok().put("memberCollectSpu", memberCollectSpu);
+        return R.ok(memberCollectSpu);
     }
 
     /**

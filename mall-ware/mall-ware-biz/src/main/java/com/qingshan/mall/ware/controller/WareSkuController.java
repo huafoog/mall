@@ -4,15 +4,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import com.qingshan.mall.ware.dto.WareSkuInfoDTO;
+import com.qingshan.common.core.dto.ware.WareSkuInfoDTO;
+import com.qingshan.common.core.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.qingshan.mall.ware.entity.WareSkuEntity;
 import com.qingshan.mall.ware.service.WareSkuService;
-import com.qingshan.common.utils.PageUtils;
-import com.qingshan.common.utils.R;
-
+import com.qingshan.common.core.utils.PageUtils;
 
 
 /**

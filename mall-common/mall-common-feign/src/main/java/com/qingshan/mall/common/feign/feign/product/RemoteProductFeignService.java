@@ -13,7 +13,7 @@ import java.util.List;
 
 @FeignClient(ProjectNameConstants.PRODUCT)
 public interface RemoteProductFeignService {
-    @RequestMapping("/product/skuinfo/info/{skuId}")
+    @RequestMapping("product/skuinfo/info/{skuId}")
     R<SkuInfoDTO> getSkuInfo(@PathVariable("skuId") Long skuId);
 
     @GetMapping("product/skusaleattrvalue/stringlist/{skuId}")
@@ -32,6 +32,6 @@ public interface RemoteProductFeignService {
      *
      * @return
      */
-    @RequestMapping("/product/skuinfo/info/{skuId}")
+    @RequestMapping("/skuinfo/info/{skuId}")
     R<SkuInfoDTO> info(@PathVariable("skuId") Long skuId);
 }

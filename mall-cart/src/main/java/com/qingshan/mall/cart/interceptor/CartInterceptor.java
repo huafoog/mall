@@ -56,6 +56,7 @@ public class CartInterceptor implements HandlerInterceptor {
         if (StringUtils.isEmpty(userInfoTo.getUserKey())){
             String uuid = UUID.randomUUID().toString();
             userInfoTo.setUserKey(uuid);
+            setCookie(response,userInfoTo.getUserKey());
         }
         //目标方法执行之前
         threadLocal.set(userInfoTo);
@@ -76,11 +77,17 @@ public class CartInterceptor implements HandlerInterceptor {
         //如果没有临时用户，第一次访问购物车就添加临时用户
         if (!userInfoTo.isTempUser()){
             //持续的延长用户的过期时间
-            Cookie cookie = new Cookie(CartConstant.TEMP_USER_COOKIE_NAME, userInfoTo.getUserKey());
-            cookie.setDomain("gulimall.com");
-            cookie.setMaxAge(CartConstant.TEMP_USER_COOKIE_TIMEOUT);
-            response.addCookie(cookie);
+            setCookie(response,userInfoTo.getUserKey());
         }
-
     }
+
+
+    private void setCookie(HttpServletResponse response,String key){
+        //持续的延长用户的过期时间
+        Cookie cookie = new Cookie(CartConstant.TEMP_USER_COOKIE_NAME, key);
+        cookie.setDomain(CartConstant.DOMAIN);
+        cookie.setMaxAge(CartConstant.TEMP_USER_COOKIE_TIMEOUT);
+        response.addCookie(cookie);
+    }
+
 }

@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <script type="text/javascript" src="../static/static/js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="../static/static/bootstrap/js/bootstrap.js"></script>
-    <script type="text/javascript" src="../static/static/js/swiper.min.js"></script>
-	<script src="../static/static/js/swiper.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../static/static/css/swiper.min.css" />
-    <link rel="stylesheet" type="text/css" href="../static/static/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="../static/static/css/success.css" />
+    <script type="text/javascript" src="/static/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/static/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/swiper.min.js"></script>
+	<script src="/static/js/swiper.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/swiper.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/success.css" />
 
  </head>
 
@@ -47,7 +47,7 @@
 
         <div class="nav_top">
         <div class="nav_top_one">
-        <a href="/#"><img src="../static/static/img/logo1.jpg" style="height: 60px;width:180px;"  /></a>
+        <a href="/#"><img src="/static/img/logo1.jpg" style="height: 60px;width:180px;"  /></a>
         </div>
         <div class="nav_top_two"><input type="text" /><button>搜索</button></div>
 
@@ -71,13 +71,13 @@
         <h3 class="ftx-02">商品已成功加入购物车</h3></div>
     <div class="p-item">
         <div class="p-img">
-        <a href="/javascript:;" target="_blank"><img style="height: 60px;width:60px;"  th:src="${skuInfo?.skuDefaultImg}" src="/static/static/img/shop1.jpg"></a>
+        <a href="/javascript:;" target="_blank"><img style="height: 60px;width:60px;"  th:src="${item?.image}" src="/static/img/shop1.jpg"></a>
         </div>
         <div class="p-info">
         <div class="p-name">
-        <a th:href="'http://item.gmall.com/'+${skuInfo?.id}+'.html'"  th:text="${skuInfo?.skuName}"  >TCL 55A950C 55英寸32核人工智能 HDR曲面超薄4K电视金属机身（枪色）</a>
+        <a th:href="'http://item.mall.com/'+${item?.skuId}+'.html'"  th:text="${item?.title}"  >${item?.title}</a>
     </div>
-    <div class="p-extra"> <span class="txt" th:text="'数量：'+${skuNum}" >  数量：1</span></div>
+    <div class="p-extra"> <span class="txt" th:text="'数量：'+${item.count}" >  数量：${item.count}</span></div>
     </div>
     <div class="clr"></div>
         </div>
@@ -88,8 +88,8 @@
         </div>
         <div class="clr"></div>
         <div class="bg_shop">
-        <a class="btn-tobback" th:href="'http://item.gmall.com:8084/'+${skuInfo?.id}+'.html'">查看商品详情</a>
-        <a class="btn-addtocart"  href="http://cart.gmall.com:8087/cartList" id="GotoShoppingCart"><b></b>去购物车结算</a>
+        <a class="btn-tobback" th:href="'http://item.mall.com/'+${item?.skuId}+'.html'">查看商品详情</a>
+        <a class="btn-addtocart"  href="http://cart.mall.com/cartList" id="GotoShoppingCart"><b></b>去购物车结算</a>
    </div>
     </div>
     </div>
@@ -99,6 +99,6 @@
 
     </div>
     </body>
-    <script type="text/javascript" src="../static/static/js/success.js"></script>
+    <script type="text/javascript" src="/static/js/success.js"></script>
 
 </html>

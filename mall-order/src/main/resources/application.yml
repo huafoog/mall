@@ -1,15 +1,22 @@
 spring:
-  datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://192.168.56.10:3306/mall_oms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
-    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: mall-nacos:8848
+  application:
+    name: mall-order
+
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
     db-config:
       id-type: auto
 
-
 server:
   port: 9000
+ribbon:
+  OkToRetryOnAllOperations: false #对所有操作请求都进行重试,默认false
+  ReadTimeout: 5000   #负载均衡超时时间，默认值5000
+  ConnectTimeout: 3000 #ribbon请求连接的超时时间，默认值2000
+  MaxAutoRetries: 0     #对当前实例的重试次数，默认0
+  MaxAutoRetriesNextServer: 1 #对切换实例的重试次数，默认1

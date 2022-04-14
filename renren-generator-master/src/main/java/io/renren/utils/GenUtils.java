@@ -1,7 +1,10 @@
 package io.renren.utils;
 
+import io.renren.RenrenApplication;
 import io.renren.config.MongoManager;
+import io.renren.dao.AdminDao;
 import io.renren.entity.ColumnEntity;
+import io.renren.entity.GenConfig;
 import io.renren.entity.TableEntity;
 import io.renren.entity.mongo.MongoDefinition;
 import io.renren.entity.mongo.MongoGeneratorEntity;
@@ -11,6 +14,9 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
@@ -32,6 +38,15 @@ import java.util.zip.ZipOutputStream;
 public class GenUtils {
 
     private static String currentTableName;
+
+    public static GenConfig configInfo(){
+
+
+        GenConfig genConfig = new GenConfig();
+        GenConfig genConfig1 = genConfig.selectOne(null);
+        return genConfig1;
+
+    }
 
     public static List<String> getTemplates() {
         List<String> templates = new ArrayList<String>();

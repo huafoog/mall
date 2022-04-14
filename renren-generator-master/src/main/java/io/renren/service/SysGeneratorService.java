@@ -48,32 +48,38 @@ public class SysGeneratorService {
         return new PageUtils(list, total, query.getLimit(), query.getPage());
     }
 
-    public Map<String, String> queryTable(String tableName) {
-        return generatorDao.queryTable(tableName);
+    public Map<String, String> queryTable(String database,String tableName) {
+        return generatorDao.queryTable(database,tableName);
     }
 
-    public List<Map<String, String>> queryColumns(String tableName) {
-        return generatorDao.queryColumns(tableName);
+    public List<Map<String, String>> queryColumns(String database,String tableName) {
+        return generatorDao.queryColumns(database,tableName);
     }
 
 
-    public byte[] generatorCode(String[] tableNames) {
+    public byte[] generatorCode(String database,String[] tableNames) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ZipOutputStream zip = new ZipOutputStream(outputStream);
         for (String tableName : tableNames) {
             //查询表信息
-            Map<String, String> table = queryTable(tableName);
+            Map<String, String> table = queryTable(database,tableName);
             //查询列信息
-            List<Map<String, String>> columns = queryColumns(tableName);
-            //生成代码
-            GenUtils.generatorCode(table, columns, zip);
+            List<Map<String, String>> columns = queryColumns(database,tableName);
+           if (columns.size() > 0){
+               //生成代码
+               GenUtils.generatorCode(table, columns, zip);
+               continue;
+           }
         }
         if (MongoManager.isMongo()) {
             GenUtils.generatorMongoCode(tableNames, zip);
         }
-
-
         IOUtils.closeQuietly(zip);
         return outputStream.toByteArray();
+    }
+
+
+    public List<String> queryDatabase(){
+        return generatorDao.queryDatabase();
     }
 }

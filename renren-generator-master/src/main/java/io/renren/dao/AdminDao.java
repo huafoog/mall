@@ -16,6 +16,8 @@
 
 package io.renren.dao;
 
+import com.baomidou.mybatisplus.core.mapper.Mapper;
+import io.renren.entity.GenConfig;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -27,18 +29,6 @@ import java.util.Map;
  * @author Mark sunlightcs@gmail.com
  * @since 2018-07-24
  */
-public interface GeneratorDao {
-    List<Map<String, Object>> queryList(Map<String, Object> map);
-
-    Map<String, String> queryTable(@Param("database") String database, @Param("tableName") String tableName);
-
-    List<Map<String, String>> queryColumns(@Param("database") String database, @Param("tableName") String tableName);
-
-    /**
-     * 获取所有数据库
-     * @return 所有数据库名称
-     */
-    default List<String> queryDatabase(){
-        return null;
-    }
+@org.apache.ibatis.annotations.Mapper
+public interface AdminDao extends Mapper<GenConfig> {
 }

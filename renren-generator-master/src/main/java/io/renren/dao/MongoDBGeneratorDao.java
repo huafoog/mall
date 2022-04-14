@@ -31,7 +31,7 @@ public class MongoDBGeneratorDao implements GeneratorDao {
     }
 
     @Override
-    public Map<String, String> queryTable(String tableName) {
+    public Map<String, String> queryTable(String database,String tableName) {
         Map<String, String> result = new HashMap<>(4 * 4 / 3 + 1);
         result.put("engine", "");
         result.put("createTime", "");
@@ -42,7 +42,7 @@ public class MongoDBGeneratorDao implements GeneratorDao {
     }
 
     @Override
-    public List<Map<String, String>> queryColumns(String tableName) {
+    public List<Map<String, String>> queryColumns(String database,String tableName) {
         MongoDefinition mongoDefinition = MongoManager.getInfo(tableName);
         if (mongoDefinition == null) {
             System.out.println(tableName);

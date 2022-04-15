@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qingshan.mall.pay.mapper.WalletLogMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.qingshan.mall.pay.entity.WalletLogEntity" id="walletLogMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="number" column="number"/>
+        <result property="targetType" column="target_type"/>
+        <result property="targetUuid" column="target_uuid"/>
+        <result property="actionType" column="action_type"/>
+        <result property="fee" column="fee"/>
+        <result property="originalAccountJson" column="original_account_json"/>
+        <result property="disposeAccountJson" column="dispose_account_json"/>
+        <result property="status" column="status"/>
+        <result property="resultType" column="result_type"/>
+        <result property="createAt" column="create_at"/>
+    </resultMap>
+
+
+</mapper>

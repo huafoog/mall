@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qingshan.mall.pay.mapper.UserWithdrawCashListMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.qingshan.mall.pay.entity.UserWithdrawCashListEntity" id="userWithdrawCashListMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="withdrawWay" column="withdraw_way"/>
+        <result property="withdrawStatus" column="withdraw_status"/>
+        <result property="number" column="number"/>
+        <result property="receivableAccount" column="receivable_account"/>
+        <result property="name" column="name"/>
+        <result property="address" column="address"/>
+        <result property="withdrawFee" column="withdraw_fee"/>
+        <result property="content" column="content"/>
+        <result property="verifyUser" column="verify_user"/>
+        <result property="actionUser" column="action_user"/>
+        <result property="actionAt" column="action_at"/>
+        <result property="sentNoticeAt" column="sent_notice_at"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="deleted" column="deleted"/>
+    </resultMap>
+
+
+</mapper>

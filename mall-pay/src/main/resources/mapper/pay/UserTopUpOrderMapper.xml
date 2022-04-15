@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qingshan.mall.pay.mapper.UserTopUpOrderMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.qingshan.mall.pay.entity.UserTopUpOrderEntity" id="userTopUpOrderMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="orderNum" column="order_num"/>
+        <result property="amounts" column="amounts"/>
+        <result property="currency" column="currency"/>
+        <result property="payFee" column="pay_fee"/>
+        <result property="exchange" column="exchange"/>
+        <result property="status" column="status"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="createAt" column="create_at"/>
+        <result property="deleted" column="deleted"/>
+    </resultMap>
+
+
+</mapper>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>代码生成器</title>
   <meta charset="UTF-8">
@@ -17,19 +18,58 @@
   <script src="plugins/jqgrid/jquery.jqGrid.min.js"></script>
   <script src="js/common.js"></script>
 </head>
+
 <body>
-<div id="rrapp" class="container">
-  <form  class="form-inline">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+<div id="rrapp" class="container" style="padding-top:20px;">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="form">
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="form-group">
+              <label for="mainPath">main路径：com.qingshan.mall</label>
+              <input type="text" class="form-control" id="mainPath" v-model="config.mainPath">
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <label for="packageName">包名：com.qingshan.mall</label>
+              <input type="text" class="form-control" id="packageName" v-model="config.packageName">
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <label for="moduleName">module名称：</label>
+              <input type="text" class="form-control" id="moduleName" v-model="config.moduleName">
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <label for="author">author</label>
+              <input type="text" class="form-control" id="author" v-model="config.author">
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <label for="email">email</label>
+              <input type="text" class="form-control" id="email" v-model="config.email">
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <label for="tablePrefix">tablePrefix</label>
+              <input type="text" class="form-control" id="tablePrefix" v-model="config.tablePrefix">
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <button @click="saveConfig" type="buttom" class="btn btn-primary btn-lg">保存</button>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-  </form>
+  </div>
+
   <div class="grid-btn">
     <div class="form-group col-sm-2">
       <select v-model="currentDatabase" class="form-control">
@@ -48,4 +88,5 @@
 
 <script src="js/generator.js"></script>
 </body>
+
 </html>

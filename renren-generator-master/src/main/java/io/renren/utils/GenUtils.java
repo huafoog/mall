@@ -2,7 +2,6 @@ package io.renren.utils;
 
 import io.renren.RenrenApplication;
 import io.renren.config.MongoManager;
-import io.renren.dao.AdminDao;
 import io.renren.entity.ColumnEntity;
 import io.renren.entity.GenConfig;
 import io.renren.entity.TableEntity;
@@ -39,9 +38,14 @@ public class GenUtils {
 
     private static String currentTableName;
 
+    private static GenConfig currentConfig = configInfo();
+
+    public static void saveGenConfig(GenConfig config){
+        currentConfig = config;
+    }
+
+
     public static GenConfig configInfo(){
-
-
         GenConfig genConfig = new GenConfig();
         GenConfig genConfig1 = genConfig.selectOne(null);
         return genConfig1;
@@ -51,14 +55,14 @@ public class GenUtils {
     public static List<String> getTemplates() {
         List<String> templates = new ArrayList<String>();
         templates.add("template/Entity.java.vm");
-        templates.add("template/Dao.xml.vm");
+        templates.add("template/Mapper.xml.vm");
 
         templates.add("template/menu.sql.vm");
 
         templates.add("template/Service.java.vm");
         templates.add("template/ServiceImpl.java.vm");
         templates.add("template/Controller.java.vm");
-        templates.add("template/Dao.java.vm");
+        templates.add("template/Mapper.java.vm");
 
         templates.add("template/index.vue.vm");
         templates.add("template/add-or-update.vue.vm");
@@ -92,7 +96,7 @@ public class GenUtils {
         tableEntity.setTableName(table.get("tableName"));
         tableEntity.setComments(table.get("tableComment"));
         //表名转换成Java类名
-        String className = tableToJava(tableEntity.getTableName(), config.getStringArray("tablePrefix"));
+        String className = tableToJava(tableEntity.getTableName(),new String[]{currentConfig.getTablePrefix()});
         tableEntity.setClassName(className);
         tableEntity.setClassname(StringUtils.uncapitalize(className));
 
@@ -139,7 +143,7 @@ public class GenUtils {
         Properties prop = new Properties();
         prop.put("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
         Velocity.init(prop);
-        String mainPath = config.getString("mainPath");
+        String mainPath = currentConfig.getMainPath();
         mainPath = StringUtils.isBlank(mainPath) ? "io.renren" : mainPath;
         //封装模板数据
         Map<String, Object> map = new HashMap<>();
@@ -153,10 +157,10 @@ public class GenUtils {
         map.put("hasBigDecimal", hasBigDecimal);
         map.put("hasList", hasList);
         map.put("mainPath", mainPath);
-        map.put("package", config.getString("package"));
-        map.put("moduleName", config.getString("moduleName"));
-        map.put("author", config.getString("author"));
-        map.put("email", config.getString("email"));
+        map.put("package",currentConfig.getPackageName());
+        map.put("moduleName", currentConfig.getModuleName());
+        map.put("author",currentConfig.getAuthor());
+        map.put("email",currentConfig.getEmail());
         map.put("datetime", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));
         VelocityContext context = new VelocityContext(map);
 
@@ -170,7 +174,7 @@ public class GenUtils {
 
             try {
                 //添加到zip
-                zip.putNextEntry(new ZipEntry(getFileName(template, tableEntity.getClassName(), config.getString("package"), config.getString("moduleName"))));
+                zip.putNextEntry(new ZipEntry(getFileName(template, tableEntity.getClassName(),currentConfig.getPackageName() ,currentConfig.getModuleName())));
                 IOUtils.write(sw.toString(), zip, "UTF-8");
                 IOUtils.closeQuietly(sw);
                 zip.closeEntry();
@@ -202,7 +206,7 @@ public class GenUtils {
         //表信息
         TableEntity tableEntity = mongoGeneratorEntity.toTableEntity();
         //表名转换成Java类名
-        String className = tableToJava(tableEntity.getTableName(), config.getStringArray("tablePrefix"));
+        String className = tableToJava(tableEntity.getTableName(),new String[]{currentConfig.getTablePrefix()});
         tableEntity.setClassName(className);
         tableEntity.setClassname(StringUtils.uncapitalize(className));
         //列信息
@@ -237,7 +241,7 @@ public class GenUtils {
         Properties prop = new Properties();
         prop.put("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
         Velocity.init(prop);
-        String mainPath = config.getString("mainPath");
+        String mainPath = currentConfig.getMainPath();
         mainPath = StringUtils.isBlank(mainPath) ? "io.renren" : mainPath;
         //封装模板数据
         Map<String, Object> map = new HashMap<>();
@@ -250,10 +254,10 @@ public class GenUtils {
         map.put("columns", tableEntity.getColumns());
         map.put("hasList", hasList);
         map.put("mainPath", mainPath);
-        map.put("package", config.getString("package"));
-        map.put("moduleName", config.getString("moduleName"));
-        map.put("author", config.getString("author"));
-        map.put("email", config.getString("email"));
+        map.put("package", currentConfig.getPackageName());
+        map.put("moduleName", currentConfig.getModuleName());
+        map.put("author", currentConfig.getAuthor());
+        map.put("email", currentConfig.getEmail());
         map.put("datetime", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));
         VelocityContext context = new VelocityContext(map);
 
@@ -266,7 +270,7 @@ public class GenUtils {
             tpl.merge(context, sw);
             try {
                 //添加到zip
-                zip.putNextEntry(new ZipEntry(getFileName(template, tableEntity.getClassName(), config.getString("package"), config.getString("moduleName"))));
+                zip.putNextEntry(new ZipEntry(getFileName(template, tableEntity.getClassName(), currentConfig.getPackageName(), currentConfig.getModuleName())));
                 IOUtils.write(sw.toString(), zip, "UTF-8");
                 IOUtils.closeQuietly(sw);
                 zip.closeEntry();
@@ -324,8 +328,8 @@ public class GenUtils {
             return packagePath + "entity" + File.separator + className + "Entity.java";
         }
 
-        if (template.contains("Dao.java.vm")) {
-            return packagePath + "dao" + File.separator + className + "Dao.java";
+        if (template.contains("Mapper.java.vm")) {
+            return packagePath + "mapper" + File.separator + className + "Mapper.java";
         }
 
         if (template.contains("Service.java.vm")) {
@@ -340,8 +344,8 @@ public class GenUtils {
             return packagePath + "controller" + File.separator + className + "Controller.java";
         }
 
-        if (template.contains("Dao.xml.vm")) {
-            return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + moduleName + File.separator + className + "Dao.xml";
+        if (template.contains("Mapper.xml.vm")) {
+            return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + moduleName + File.separator + className + "Mapper.xml";
         }
 
         if (template.contains("menu.sql.vm")) {

@@ -53,7 +53,7 @@ var vm = new Vue({
     },
 	methods: {
 	    getDataBase:function(){
-            $.get("http://localhost:8090/sys/generator/getDatabase",{},function(res){
+            $.get("/sys/generator/getDatabase",{},function(res){
                 vm.database = res.data
                 console.log(this.database)
             });
@@ -68,7 +68,8 @@ var vm = new Vue({
             }).trigger("reloadGrid");
 		},
 		getConfig(){
-			$.get("http://localhost:8090/sys/generator/getConfig",{},function(res){
+			$.get("/sys/generator/getConfig",{},function(res){
+				vm.config = res.data
 				console.log(res)
 			});
 		},
@@ -79,11 +80,22 @@ var vm = new Vue({
             }
             location.href = "sys/generator/code?tables=" + tableNames.join() + "&database="+vm.currentDatabase;
 		},
-		submit:function(){
-			vm.gen();
-		},
-		gen(){
+		saveConfig(){
 
+			var c = JSON.stringify(this.config);
+			console.log(c)
+			$.ajax(
+				{
+					url:"sys/generator/saveConfig",
+					data:c,
+					type:"POST",
+					success:(res)=>{
+						location.reload()
+					},
+					datatype: "json",
+					contentType:"application/json"
+				}
+			);
 		}
 	}
 });

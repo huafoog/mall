@@ -8,6 +8,8 @@
 
 package io.renren.controller;
 
+import com.netflix.client.http.HttpResponse;
+import io.renren.entity.GenConfig;
 import io.renren.service.SysGeneratorService;
 import io.renren.utils.GenUtils;
 import io.renren.utils.PageUtils;
@@ -15,15 +17,14 @@ import io.renren.utils.Query;
 import io.renren.utils.R;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.io.IOUtils;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Wrapper;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -69,6 +70,14 @@ public class SysGeneratorController {
 	@GetMapping("/getConfig")
 	public R getConfig(){
 		return R.ok().put("data", GenUtils.configInfo());
+	}
+	@ResponseBody
+	@PostMapping("/saveConfig")
+	public R saveConfig(@RequestBody GenConfig config){
+		config.update(null);
+		GenUtils.saveGenConfig(config);
+		System.out.println(config.toString());
+		return R.ok();
 	}
 
 

@@ -19,10 +19,10 @@ class MallProductApplicationTests {
 
     @Test
     void contextLoads() {
-        BrandEntity model = new BrandEntity();
-        model.setDescript("华为");
-        brandService.save(model);
-        System.out.println("success");
+//        BrandEntity model = new BrandEntity();
+//        model.setDescript("华为");
+//        brandService.save(model);
+//        System.out.println("success");
     }
 
 }

@@ -14,8 +14,6 @@
     </parent>
     <groupId>com.qingshan.mall</groupId>
     <artifactId>mall-ware</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>mall-ware</name>
     <description>仓库服务</description>
     <dependencies>
         <dependency>

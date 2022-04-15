@@ -8,13 +8,5 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <version>0.0.1-SNAPSHOT</version>
     <artifactId>mall-coupon-api</artifactId>
-    <packaging>pom</packaging>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-    </dependencies>
 </project>

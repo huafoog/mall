@@ -7,22 +7,17 @@
         <groupId>com.qingshan.mall</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
     <groupId>com.qingshan.mall</groupId>
     <artifactId>mall-member</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>mall-member</name>
     <description>会员服务</description>
 
     <packaging>pom</packaging>
-
-
-    <properties>
-        <java.version>11</java.version>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>com.qingshan.mall</groupId>
-            <artifactId>mall-common</artifactId>
+            <artifactId>mall-common-core</artifactId>
         </dependency>
     </dependencies>
 

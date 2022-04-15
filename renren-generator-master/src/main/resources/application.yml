@@ -61,3 +61,12 @@ pagehelper:
 renren:
   database: mysql
 
+
+#热部署模块
+devtools:
+  restart:
+    #热部署开关
+    enabled: true
+    #指定热部署的目录
+    additional-paths: src/main/java
+

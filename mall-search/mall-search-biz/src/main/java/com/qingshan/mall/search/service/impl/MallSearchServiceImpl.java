@@ -178,7 +178,7 @@ public class MallSearchServiceImpl implements MallSearchService {
         //5、分页信息-页码
         result.setPageNum(param.getPageNum());
         //5、1分页信息、总记录数
-        long total = hits.getTotalHits().value;
+        long total = hits.getTotalHits();
         result.setTotal(total);
 
         //5、2分页信息-总页码-计算

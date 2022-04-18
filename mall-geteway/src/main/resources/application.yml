@@ -40,12 +40,18 @@ spring:
             - Path=/api/coupon/**
           filters:
             - RewritePath=/api/?(?<segment>.*), /$\{segment}
-        - id: coupon_route
+        - id: ware_route
           uri: lb://mall-ware
           predicates:
             - Path=/api/ware/**
           filters:
             - RewritePath=/api/?(?<segment>.*), /$\{segment}
+        - id: pay_route
+          uri: lb://mall-pay
+          predicates:
+            - Path=/pay/**
+          filters:
+            - RewritePath=/pay/?(?<segment>.*), /$\{segment}
         - id: admin_route
           uri: lb://renren-fast
           predicates:

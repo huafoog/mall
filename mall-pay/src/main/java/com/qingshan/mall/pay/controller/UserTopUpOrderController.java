@@ -4,13 +4,11 @@ import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import io.swagger.annotations.*;
 
 import com.qingshan.mall.pay.entity.UserTopUpOrderEntity;
+import com.qingshan.mall.pay.vo.page.UserTopUpOrderVO;
 import com.qingshan.mall.pay.service.UserTopUpOrderService;
 import com.qingshan.common.core.utils.PageUtils;
 import com.qingshan.common.core.utils.R;
@@ -22,10 +20,11 @@ import com.qingshan.common.core.utils.R;
  *
  * @author qingshan
  * @email zyxss315@163.com
- * @date 2022-04-15 14:54:48
+ * @date 2022-04-18 17:06:43
  */
 @RestController
-@RequestMapping("pay/usertopuporder")
+@RequestMapping("usertopuporder")
+@Api(tags = "充值订单")
 public class UserTopUpOrderController {
     @Autowired
     private UserTopUpOrderService userTopUpOrderService;
@@ -33,9 +32,10 @@ public class UserTopUpOrderController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
+    @ApiOperation("充值订单列表")
     // @RequiresPermissions("pay:usertopuporder:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R<PageUtils<UserTopUpOrderEntity>> list(@RequestParam UserTopUpOrderVO params){
         PageUtils page = userTopUpOrderService.queryPage(params);
 
         return R.ok(page);
@@ -45,9 +45,10 @@ public class UserTopUpOrderController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
+    @GetMapping("/info/{id}")
+    @ApiOperation("充值订单信息")
     // @RequiresPermissions("pay:usertopuporder:info")
-    public R info(@PathVariable("id") String id){
+    public R<UserTopUpOrderEntity> info(@PathVariable("id") String id){
 		UserTopUpOrderEntity userTopUpOrder = userTopUpOrderService.getById(id);
 
         return R.ok(userTopUpOrder);
@@ -56,7 +57,8 @@ public class UserTopUpOrderController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
+    @ApiOperation("充值订单保存")
     // @RequiresPermissions("pay:usertopuporder:save")
     public R save(@RequestBody UserTopUpOrderEntity userTopUpOrder){
 		userTopUpOrderService.save(userTopUpOrder);
@@ -67,7 +69,8 @@ public class UserTopUpOrderController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @PostMapping("/update")
+    @ApiOperation("充值订单修改")
     // @RequiresPermissions("pay:usertopuporder:update")
     public R update(@RequestBody UserTopUpOrderEntity userTopUpOrder){
 		userTopUpOrderService.updateById(userTopUpOrder);
@@ -78,7 +81,8 @@ public class UserTopUpOrderController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @PostMapping("/delete")
+    @ApiOperation("充值订单删除")
     // @RequiresPermissions("pay:usertopuporder:delete")
     public R delete(@RequestBody String[] ids){
 		userTopUpOrderService.removeByIds(Arrays.asList(ids));

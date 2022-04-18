@@ -65,6 +65,7 @@ public class GenUtils {
         templates.add("template/Mapper.java.vm");
 
         templates.add("template/index.vue.vm");
+        templates.add("template/VO.java.vm");
         templates.add("template/add-or-update.vue.vm");
         if (MongoManager.isMongo()) {
             // mongo不需要mapper、sql   实体类需要替换
@@ -327,6 +328,9 @@ public class GenUtils {
         if (template.contains("Entity.java.vm") || template.contains("MongoEntity.java.vm")) {
             return packagePath + "entity" + File.separator + className + "Entity.java";
         }
+        if (template.contains("VO.java.vm")) {
+            return packagePath + "vo" + File.separator + "page" + File.separator + className + "VO.java";
+        }
 
         if (template.contains("Mapper.java.vm")) {
             return packagePath + "mapper" + File.separator + className + "Mapper.java";
@@ -345,7 +349,7 @@ public class GenUtils {
         }
 
         if (template.contains("Mapper.xml.vm")) {
-            return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + moduleName + File.separator + className + "Mapper.xml";
+            return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + className + "Mapper.xml";
         }
 
         if (template.contains("menu.sql.vm")) {

@@ -4,13 +4,11 @@ import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import io.swagger.annotations.*;
 
 import com.qingshan.mall.pay.entity.WalletLogEntity;
+import com.qingshan.mall.pay.vo.page.WalletLogVO;
 import com.qingshan.mall.pay.service.WalletLogService;
 import com.qingshan.common.core.utils.PageUtils;
 import com.qingshan.common.core.utils.R;
@@ -22,10 +20,11 @@ import com.qingshan.common.core.utils.R;
  *
  * @author qingshan
  * @email zyxss315@163.com
- * @date 2022-04-15 14:54:48
+ * @date 2022-04-18 17:06:43
  */
 @RestController
-@RequestMapping("pay/walletlog")
+@RequestMapping("walletlog")
+@Api(tags = "用户钱包流水记录表")
 public class WalletLogController {
     @Autowired
     private WalletLogService walletLogService;
@@ -33,9 +32,10 @@ public class WalletLogController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
+    @ApiOperation("用户钱包流水记录表列表")
     // @RequiresPermissions("pay:walletlog:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R<PageUtils<WalletLogEntity>> list(@RequestParam WalletLogVO params){
         PageUtils page = walletLogService.queryPage(params);
 
         return R.ok(page);
@@ -45,9 +45,10 @@ public class WalletLogController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
+    @GetMapping("/info/{id}")
+    @ApiOperation("用户钱包流水记录表信息")
     // @RequiresPermissions("pay:walletlog:info")
-    public R info(@PathVariable("id") String id){
+    public R<WalletLogEntity> info(@PathVariable("id") String id){
 		WalletLogEntity walletLog = walletLogService.getById(id);
 
         return R.ok(walletLog);
@@ -56,7 +57,8 @@ public class WalletLogController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
+    @ApiOperation("用户钱包流水记录表保存")
     // @RequiresPermissions("pay:walletlog:save")
     public R save(@RequestBody WalletLogEntity walletLog){
 		walletLogService.save(walletLog);
@@ -67,7 +69,8 @@ public class WalletLogController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @PostMapping("/update")
+    @ApiOperation("用户钱包流水记录表修改")
     // @RequiresPermissions("pay:walletlog:update")
     public R update(@RequestBody WalletLogEntity walletLog){
 		walletLogService.updateById(walletLog);
@@ -78,7 +81,8 @@ public class WalletLogController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @PostMapping("/delete")
+    @ApiOperation("用户钱包流水记录表删除")
     // @RequiresPermissions("pay:walletlog:delete")
     public R delete(@RequestBody String[] ids){
 		walletLogService.removeByIds(Arrays.asList(ids));

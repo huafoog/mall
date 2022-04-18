@@ -6,3 +6,6 @@ spring:
         file-extension: yaml
   application:
     name: geteway
+
+swagger:
+  names: pay

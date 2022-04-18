@@ -4,13 +4,11 @@ import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import io.swagger.annotations.*;
 
 import com.qingshan.mall.pay.entity.UserWithdrawCashListEntity;
+import com.qingshan.mall.pay.vo.page.UserWithdrawCashListVO;
 import com.qingshan.mall.pay.service.UserWithdrawCashListService;
 import com.qingshan.common.core.utils.PageUtils;
 import com.qingshan.common.core.utils.R;
@@ -22,10 +20,11 @@ import com.qingshan.common.core.utils.R;
  *
  * @author qingshan
  * @email zyxss315@163.com
- * @date 2022-04-15 14:54:48
+ * @date 2022-04-18 17:06:43
  */
 @RestController
-@RequestMapping("pay/userwithdrawcashlist")
+@RequestMapping("userwithdrawcashlist")
+@Api(tags = "提现记录表")
 public class UserWithdrawCashListController {
     @Autowired
     private UserWithdrawCashListService userWithdrawCashListService;
@@ -33,9 +32,10 @@ public class UserWithdrawCashListController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
+    @ApiOperation("提现记录表列表")
     // @RequiresPermissions("pay:userwithdrawcashlist:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R<PageUtils<UserWithdrawCashListEntity>> list(@RequestParam UserWithdrawCashListVO params){
         PageUtils page = userWithdrawCashListService.queryPage(params);
 
         return R.ok(page);
@@ -45,9 +45,10 @@ public class UserWithdrawCashListController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
+    @GetMapping("/info/{id}")
+    @ApiOperation("提现记录表信息")
     // @RequiresPermissions("pay:userwithdrawcashlist:info")
-    public R info(@PathVariable("id") String id){
+    public R<UserWithdrawCashListEntity> info(@PathVariable("id") String id){
 		UserWithdrawCashListEntity userWithdrawCashList = userWithdrawCashListService.getById(id);
 
         return R.ok(userWithdrawCashList);
@@ -56,7 +57,8 @@ public class UserWithdrawCashListController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
+    @ApiOperation("提现记录表保存")
     // @RequiresPermissions("pay:userwithdrawcashlist:save")
     public R save(@RequestBody UserWithdrawCashListEntity userWithdrawCashList){
 		userWithdrawCashListService.save(userWithdrawCashList);
@@ -67,7 +69,8 @@ public class UserWithdrawCashListController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @PostMapping("/update")
+    @ApiOperation("提现记录表修改")
     // @RequiresPermissions("pay:userwithdrawcashlist:update")
     public R update(@RequestBody UserWithdrawCashListEntity userWithdrawCashList){
 		userWithdrawCashListService.updateById(userWithdrawCashList);
@@ -78,7 +81,8 @@ public class UserWithdrawCashListController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @PostMapping("/delete")
+    @ApiOperation("提现记录表删除")
     // @RequiresPermissions("pay:userwithdrawcashlist:delete")
     public R delete(@RequestBody String[] ids){
 		userWithdrawCashListService.removeByIds(Arrays.asList(ids));

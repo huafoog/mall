@@ -15,6 +15,7 @@
     <modules>
         <module>mall-common-core</module>
         <module>mall-common-feign</module>
+        <module>mall-common-swagger</module>
     </modules>
 
     <dependencyManagement>

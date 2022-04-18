@@ -4,13 +4,11 @@ import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import io.swagger.annotations.*;
 
 import com.qingshan.mall.pay.entity.WalletEntity;
+import com.qingshan.mall.pay.vo.page.WalletVO;
 import com.qingshan.mall.pay.service.WalletService;
 import com.qingshan.common.core.utils.PageUtils;
 import com.qingshan.common.core.utils.R;
@@ -22,10 +20,11 @@ import com.qingshan.common.core.utils.R;
  *
  * @author qingshan
  * @email zyxss315@163.com
- * @date 2022-04-15 14:54:48
+ * @date 2022-04-18 17:06:43
  */
 @RestController
-@RequestMapping("pay/wallet")
+@RequestMapping("wallet")
+@Api(tags = "用户钱包")
 public class WalletController {
     @Autowired
     private WalletService walletService;
@@ -33,9 +32,10 @@ public class WalletController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
+    @ApiOperation("用户钱包列表")
     // @RequiresPermissions("pay:wallet:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R<PageUtils<WalletEntity>> list(@RequestParam WalletVO params){
         PageUtils page = walletService.queryPage(params);
 
         return R.ok(page);
@@ -45,9 +45,10 @@ public class WalletController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{userId}")
+    @GetMapping("/info/{userId}")
+    @ApiOperation("用户钱包信息")
     // @RequiresPermissions("pay:wallet:info")
-    public R info(@PathVariable("userId") String userId){
+    public R<WalletEntity> info(@PathVariable("userId") String userId){
 		WalletEntity wallet = walletService.getById(userId);
 
         return R.ok(wallet);
@@ -56,7 +57,8 @@ public class WalletController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
+    @ApiOperation("用户钱包保存")
     // @RequiresPermissions("pay:wallet:save")
     public R save(@RequestBody WalletEntity wallet){
 		walletService.save(wallet);
@@ -67,7 +69,8 @@ public class WalletController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @PostMapping("/update")
+    @ApiOperation("用户钱包修改")
     // @RequiresPermissions("pay:wallet:update")
     public R update(@RequestBody WalletEntity wallet){
 		walletService.updateById(wallet);
@@ -78,7 +81,8 @@ public class WalletController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @PostMapping("/delete")
+    @ApiOperation("用户钱包删除")
     // @RequiresPermissions("pay:wallet:delete")
     public R delete(@RequestBody String[] userIds){
 		walletService.removeByIds(Arrays.asList(userIds));

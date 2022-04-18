@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
  * 
  * @author qingshan
  * @email zyxss315@163.com
- * @date 2022-04-15 14:54:48
+ * @date 2022-04-18 17:06:43
  */
 @Mapper
 public interface WalletLogMapper extends BaseMapper<WalletLogEntity> {

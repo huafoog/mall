@@ -12,6 +12,7 @@ package com.qingshan.common.core.constant.enums;
  *  12: 订单
  *  13: 购物车
  *  14: 物流
+ *  20: 支付
  *
  *
  */
@@ -24,7 +25,10 @@ public enum BizCodeEnum {
     PRODUCT_UP_EXCEPTION(11000,"商品上架异常"),
     USER_EXIST_EXCEPTION(15001,"用户已存在"),
     PHONE_EXIST_EXCEPTION(15002,"手机号已存在"),
-    LOGINACCT_PASSWORD_INVAILD_EXCEPTION(15003,"账号或密码错误")
+    LOGINACCT_PASSWORD_INVAILD_EXCEPTION(15003,"账号或密码错误"),
+
+
+    USER_WALLET_EXIST(20001,"用户钱包已存在")
 
     ;
     private int code;

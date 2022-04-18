@@ -11,6 +11,7 @@ package com.qingshan.common.core.utils;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.qingshan.common.core.vo.BasePageInputVO;
 import com.qingshan.common.core.xss.SQLFilter;
 import org.apache.commons.lang.StringUtils;
 
@@ -26,7 +27,6 @@ public class Query<T> {
     public IPage<T> getPage(Map<String, Object> params) {
         return this.getPage(params, null, false);
     }
-
     public IPage<T> getPage(Map<String, Object> params, String defaultOrderField, boolean isAsc) {
         //分页参数
         long curPage = 1;
@@ -59,6 +59,37 @@ public class Query<T> {
                 return page.addOrder(OrderItem.desc(orderField));
             }
         }
+
+        //没有排序字段，则不排序
+        if(StringUtils.isBlank(defaultOrderField)){
+            return page;
+        }
+
+        //默认排序
+        if(isAsc) {
+            page.addOrder(OrderItem.asc(defaultOrderField));
+        }else {
+            page.addOrder(OrderItem.desc(defaultOrderField));
+        }
+
+        return page;
+    }
+
+
+
+    public IPage<T> getPage(BasePageInputVO params) {
+        return this.getPage(params, null, false);
+    }
+    public IPage<T> getPage(BasePageInputVO params, String defaultOrderField, boolean isAsc) {
+        //分页参数
+        long curPage = 1;
+        long limit = 10;
+
+        curPage = params.getPage();
+        limit = params.getLimit();
+
+        //分页对象
+        Page<T> page = new Page<>(curPage, limit);
 
         //没有排序字段，则不排序
         if(StringUtils.isBlank(defaultOrderField)){

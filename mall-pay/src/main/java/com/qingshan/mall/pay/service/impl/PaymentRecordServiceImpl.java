@@ -11,13 +11,20 @@ import com.qingshan.common.core.utils.Query;
 import com.qingshan.mall.pay.mapper.PaymentRecordMapper;
 import com.qingshan.mall.pay.entity.PaymentRecordEntity;
 import com.qingshan.mall.pay.service.PaymentRecordService;
+import com.qingshan.mall.pay.vo.page.PaymentRecordVO;
 
-
+/**
+ * 支付记录列表
+ *
+ * @author qingshan
+ * @email zyxss315@163.com
+ * @date 2022-04-18 17:06:43
+ */
 @Service("paymentRecordService")
 public class PaymentRecordServiceImpl extends ServiceImpl<PaymentRecordMapper, PaymentRecordEntity> implements PaymentRecordService {
 
     @Override
-    public PageUtils queryPage(Map<String, Object> params) {
+    public PageUtils queryPage(PaymentRecordVO params) {
         IPage<PaymentRecordEntity> page = this.page(
                 new Query<PaymentRecordEntity>().getPage(params),
                 new QueryWrapper<PaymentRecordEntity>()

@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.nacos.client.utils.StringUtils;
 import com.qingshan.common.core.dto.product.sku.SkuInfoDTO;
 import com.qingshan.common.core.utils.R;
-import com.qingshan.mall.cart.dto.UserInfoDTO;
+import com.qingshan.mall.cart.dto.UserInfoDTO1;
 import com.qingshan.mall.cart.interceptor.CartInterceptor;
 import com.qingshan.mall.cart.service.CartService;
 import com.qingshan.mall.cart.vo.CartItemVO;
@@ -89,7 +89,7 @@ public class CartServiceImpl implements CartService {
 
     private List<CartItemVO> getCartItems(String key) {
         //得到用户信息 账号用户 、临时用户
-        UserInfoDTO userInfoTo = CartInterceptor.threadLocal.get();
+        UserInfoDTO1 userInfoTo = CartInterceptor.threadLocal.get();
         //1、userInfoTo.getUserId()不为空表示账号用户，反之临时用户  然后决定用临时购物车还是用户购物车
         BoundHashOperations<String, Object, Object> operations = redisTemplate.boundHashOps(key);
         List<Object> values = operations.values();
@@ -102,7 +102,7 @@ public class CartServiceImpl implements CartService {
     public CartVO getCart() throws ExecutionException, InterruptedException {
         CartVO cart = new CartVO();
         //1、登录
-        UserInfoDTO userInfoTo = CartInterceptor.threadLocal.get();
+        UserInfoDTO1 userInfoTo = CartInterceptor.threadLocal.get();
         if (userInfoTo.getUserId() != null){
             String cartKey = CART_PREFIX + userInfoTo.getUserId();
 
@@ -165,7 +165,7 @@ public class CartServiceImpl implements CartService {
      */
     private BoundHashOperations<String, Object, Object> getCartOps() {
         //得到用户信息 账号用户 、临时用户
-        UserInfoDTO userInfoTo = CartInterceptor.threadLocal.get();
+        UserInfoDTO1 userInfoTo = CartInterceptor.threadLocal.get();
         //1、userInfoTo.getUserId()不为空表示账号用户，反之临时用户  然后决定用临时购物车还是用户购物车
         //放入缓存的key
         String cartKey = "";

@@ -1,6 +1,0 @@
-spring:
-  cloud:
-    nacos:
-      config:
-        server-addr: mall-naocs:8848
-        file-extension: yml

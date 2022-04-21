@@ -2,8 +2,8 @@ package com.qingshan.mall.cart.interceptor;
 
 import com.qingshan.common.core.constant.AuthServerConstant;
 import com.qingshan.common.core.dto.member.MemberDTO;
-import com.qingshan.mall.cart.constant.CartConstant;
-import com.qingshan.mall.cart.dto.UserInfoDTO;
+import com.qingshan.mall.cart.constant.CartConstant1;
+import com.qingshan.mall.cart.dto.UserInfoDTO1;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,7 +22,7 @@ import java.util.UUID;
  */
 public class CartInterceptor implements HandlerInterceptor {
     //ThreadLocal同一个线程共享数据
-    public static ThreadLocal<UserInfoDTO> threadLocal = new ThreadLocal<>();
+    public static ThreadLocal<UserInfoDTO1> threadLocal = new ThreadLocal<>();
     /**
      * 在目标方法执行之前拦截
      * @param request
@@ -33,7 +33,7 @@ public class CartInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        UserInfoDTO userInfoTo = new UserInfoDTO();
+        UserInfoDTO1 userInfoTo = new UserInfoDTO1();
         HttpSession session = request.getSession();
         MemberDTO member = (MemberDTO) session.getAttribute(AuthServerConstant.LOGIN_USER);
         if (member != null){
@@ -45,7 +45,7 @@ public class CartInterceptor implements HandlerInterceptor {
         if (cookies!=null && cookies.length >0){
             for (Cookie cookie : cookies) {
                 String name = cookie.getName();
-                if (name.equals(CartConstant.TEMP_USER_COOKIE_NAME)){
+                if (name.equals(CartConstant1.TEMP_USER_COOKIE_NAME)){
                     userInfoTo.setUserKey(cookie.getValue());
                     userInfoTo.setTempUser(true);
                 }
@@ -73,7 +73,7 @@ public class CartInterceptor implements HandlerInterceptor {
      */
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        UserInfoDTO userInfoTo = threadLocal.get();
+        UserInfoDTO1 userInfoTo = threadLocal.get();
         //如果没有临时用户，第一次访问购物车就添加临时用户
         if (!userInfoTo.isTempUser()){
             //持续的延长用户的过期时间
@@ -84,9 +84,9 @@ public class CartInterceptor implements HandlerInterceptor {
 
     private void setCookie(HttpServletResponse response,String key){
         //持续的延长用户的过期时间
-        Cookie cookie = new Cookie(CartConstant.TEMP_USER_COOKIE_NAME, key);
-        cookie.setDomain(CartConstant.DOMAIN);
-        cookie.setMaxAge(CartConstant.TEMP_USER_COOKIE_TIMEOUT);
+        Cookie cookie = new Cookie(CartConstant1.TEMP_USER_COOKIE_NAME, key);
+        cookie.setDomain(CartConstant1.DOMAIN);
+        cookie.setMaxAge(CartConstant1.TEMP_USER_COOKIE_TIMEOUT);
         response.addCookie(cookie);
     }
 

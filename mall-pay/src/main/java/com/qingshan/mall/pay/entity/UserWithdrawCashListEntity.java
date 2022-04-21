@@ -1,5 +1,6 @@
 package com.qingshan.mall.pay.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.*;
@@ -25,7 +26,7 @@ public class UserWithdrawCashListEntity implements Serializable {
 	/**
 	 * id
 	 */
-	@TableId
+	@TableId(type = IdType.ID_WORKER)
 	@ApiModelProperty("id")
 	private String id;
 	/**

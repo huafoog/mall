@@ -1,6 +1,6 @@
 package com.qingshan.mall.cart.web;
 
-import com.qingshan.mall.cart.dto.UserInfoDTO;
+import com.qingshan.mall.cart.dto.UserInfoDTO1;
 import com.qingshan.mall.cart.interceptor.CartInterceptor;
 import com.qingshan.mall.cart.service.CartService;
 import com.qingshan.mall.cart.vo.CartItemVO;
@@ -24,7 +24,7 @@ public class IndexController {
     @GetMapping("/")
     public String Index(){
         //快速得到用户信息，id,user-key
-        UserInfoDTO userInfoTo = CartInterceptor.threadLocal.get();
+        UserInfoDTO1 userInfoTo = CartInterceptor.threadLocal.get();
         System.out.println(userInfoTo);
         return "cartList";
     }

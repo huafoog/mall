@@ -6,18 +6,32 @@ spring:
           uri: lb://mall-product
           predicates:
             - Host= mall.com
+          filters:
+            - PreserveHostHeader
         - id: mall_product_route
           uri: lb://mall-product
           predicates:
             - Host= item.mall.com
+          filters:
+            - PreserveHostHeader
+        - id: mall_order_route
+          uri: lb://mall-order
+          predicates:
+            - Host= order.mall.com
+          filters:
+            - PreserveHostHeader
         - id: mall_cart_route
           uri: lb://mall-cart
           predicates:
             - Host=cart.mall.com
+          filters:
+            - PreserveHostHeader
         - id: mall_product_route
           uri: lb://mall-auth
           predicates:
             - Host= auth.mall.com
+          filters:
+            - PreserveHostHeader
         - id: mall_search_route
           uri: lb://mall-search
           predicates:
